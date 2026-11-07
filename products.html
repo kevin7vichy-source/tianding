@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核心产品与业务 - 香港天鼎国际贸易</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<style> 
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; } 
+</style>
+</head>
+<body class="antialiased">
 
+  <!-- 导航栏 -->
+  <header class="bg-brand-green text-brand-cream sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-widest flex items-center gap-2">
+        <span class="w-8 h-8 bg-brand-gold text-brand-green flex items-center justify-center rounded font-serif">鼎</span>
+        天鼎国际
+      </a>
+      <nav class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-brand-gold transition">首页</a>
+        <a href="products.html" class="text-brand-gold border-b-2 border-brand-gold pb-1">产品与服务</a>
+        <a href="b2b.html" class="hover:text-brand-gold transition">渠道合作</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 顶部 Hero 区 -->
+  <section class="bg-brand-green text-brand-cream py-20 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-wide">自然馈赠 · 科学萃取</h1>
+      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
+        专注紫米及蓝莓来源花青素系列产品的研发与海外市场销售，同时提供跨境贸易与电商运营全链路支持。
+      </p>
+    </div>
+  </section>
+
+  <!-- 核心产品区块 -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    
+    <!-- 模块 1：花青素系列 -->
+    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 mb-12 flex flex-col md:flex-row gap-10 items-center">
+      <div class="flex-1">
+        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">01 大健康核心产品</div>
+        <h2 class="text-2xl font-bold text-brand-green mb-4">紫米及蓝莓来源花青素系列</h2>
+        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+          顺应全球大健康趋势，以紫米为主要原料，蓝莓为辅，从事花青素系列产品的深度研发。我们不仅提供高品质的健康产品，更致力于将天然、安全的植物萃取精华推向海外市场。
+        </p>
+        <ul class="space-y-3 text-sm font-medium text-brand-green mb-8">
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 天然植物来源，科学配比萃取</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 严格的品控与生产标准</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 支持海外市场分销与定制合作</li>
+        </ul>
+      </div>
+      <div class="w-full md:w-1/2 aspect-[4/3] bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10">
+        <!-- 如果你有天鼎官网的紫米图，把 src 换成你的图片路径，比如 assets/img/purple-rice.webp -->
+        <div class="w-full h-full flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
+          [ 花青素产品图 ]
+        </div>
+      </div>
+    </div>
+
+    <!-- 模块 2：跨境贸易 -->
+    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 mb-12 flex flex-col md:flex-row-reverse gap-10 items-center">
+      <div class="flex-1">
+        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">02 跨境出海支持</div>
+        <h2 class="text-2xl font-bold text-brand-green mb-4">跨境贸易与电商运营</h2>
+        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+          立足香港，提供一站式跨境贸易支持。包括大健康产品的海外市场运营、电子商务渠道搭建以及专业的贸易咨询服务，助力品牌无缝对接全球市场。
+        </p>
+        <ul class="space-y-3 text-sm font-medium text-brand-green mb-8">
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 大健康产品海外市场拓展与咨询</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 主流电商平台（独立站/Amazon）运营</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 国际物流、清关与供应链优化</li>
+        </ul>
+      </div>
+      <div class="w-full md:w-1/2 aspect-[4/3] bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10">
+        <!-- 替换为跨境贸易图 -->
+        <div class="w-full h-full flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
+          [ 跨境贸易/电商图 ]
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 底部合规声明 -->
+  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm mb-4 leading-relaxed">
+        香港天鼎国际贸易有限公司。本页内容仅作公司业务与服务能力介绍，不构成任何具体的医疗建议、疗效保证或商业承诺。
+      </p>
+      <p class="text-xs">© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED</p>
+    </div>
+  </footer>
+
+</body>
+</html>
