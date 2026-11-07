@@ -1,0 +1,44 @@
+:root {
+  --bg-main: #1F3A2E;          /* 天鼎主色：深绿 */
+  --bg-card: #2D5141;          /* 卡片较浅绿 */
+  --gold: #B08D57;             /* 香槟金 */
+  --gold-hover: #D9C29A;
+  --text-main: #F7F4EC;        /* 米白文字 */
+  --text-muted: #A9A294;       /* 辅助文字 */
+  --danger: #ef4444;
+  --border: rgba(247, 244, 236, 0.15);
+  --font-family: 'PingFang HK', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-family); background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+.hidden { display: none !important; }
+
+/* 顶部 Logo 区 */
+header.top { padding: 24px 5%; border-bottom: 1px solid var(--border); background: rgba(31, 58, 46, 0.8); backdrop-filter: blur(8px); }
+.brand-row { display: flex; align-items: center; }
+.logo { height: 36px; width: auto; }
+
+/* 主体 */
+main#main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+.card.login { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 40px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+.card h1 { font-size: 24px; font-weight: 500; letter-spacing: 2px; margin-bottom: 12px; color: var(--text-main); }
+.muted { color: var(--text-muted); font-size: 14px; margin-bottom: 10px; }
+.small { font-size: 12px; margin-top: 20px; line-height: 1.5; opacity: 0.8; }
+
+/* 错误提示 */
+.err { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); padding: 10px; border-radius: 4px; font-size: 13px; margin: 15px 0; }
+
+/* 表单 */
+form#f { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+label { font-size: 14px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px; }
+input[type="password"] { font-family: var(--font-family); font-size: 16px; padding: 12px 14px; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); border-radius: 4px; color: var(--text-main); outline: none; transition: all 0.3s; letter-spacing: 2px; }
+input[type="password"]:focus { border-color: var(--gold); background: rgba(0, 0, 0, 0.4); box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.2); }
+button[type="submit"] { font-family: var(--font-family); font-size: 15px; font-weight: 600; letter-spacing: 1px; background: var(--gold); color: var(--bg-main); border: none; padding: 14px; border-radius: 4px; cursor: pointer; transition: all 0.3s; margin-top: 8px; }
+button[type="submit"]:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(176, 141, 87, 0.2); }
+
+/* 底部 */
+footer { text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); background: rgba(31, 58, 46, 0.95); }
+footer .slogan { color: var(--gold); font-size: 14px; letter-spacing: 4px; margin-bottom: 16px; }
+footer p { color: var(--text-muted); font-size: 12px; margin-bottom: 6px; opacity: 0.7; }
+footer p:last-child { margin-top: 16px; opacity: 0.5; }
+@media (max-width: 600px) { .card.login { padding: 24px; } main#main { align-items: flex-start; padding-top: 20px; } }

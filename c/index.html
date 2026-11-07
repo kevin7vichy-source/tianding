@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>客户专属看板 · 香港天鼎国际贸易</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand-row">
+    <!-- 请替换为你天鼎服务器的真实 Logo 路径 -->
+    <img src="/assets/logo-tianding-reversed.svg" alt="HK TIANDING" class="logo">
+  </div>
+</header>
+<main id="main">
+<section class="card login" id="gate">
+  <h1>专属客户看板</h1>
+  <p class="muted">本看板仅供香港天鼎国际贸易客户查阅业务办理进度。</p>
+  <p class="muted">请输入您的专属顾问单独提供的访问密码。</p>
+  <p class="err hidden" id="err" role="alert"></p>
+  <form id="f" autocomplete="off">
+    <label>访问密码<input id="pw" type="password" required maxlength="256" autocomplete="current-password"></label>
+    <button type="submit" id="go">安全解密并查看看板</button>
+  </form>
+  <p class="muted small">您的业务资料以加密形式保存，完全在您的本地设备上解开显示，密码不会发送到任何服务器。</p>
+</section>
+<div id="app" class="hidden"></div>
+</main>
+<footer>
+  <p class="slogan">立足香港，连通全球</p>
+  <p>天鼎严格遵守香港《个人资料（私隐）条例》（第486章）处理客户资料。如需查阅或更正，请联系您的专属顾问。</p>
+  <p>本页仅反映业务资料的整理与办理进度，不构成相关部门（如入境处、海关、税局等）的审批结果，也不构成任何获批承诺。</p>
+  <p>© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
