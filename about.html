@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于天鼎 - 香港天鼎国际贸易</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<style> 
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; } 
+</style>
+</head>
+<body class="antialiased">
 
+  <!-- 导航栏 -->
+  <header class="bg-brand-green text-brand-cream sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo-horizontal-white.svg" alt="天鼎国际" class="h-10 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-brand-gold transition">首页</a>
+        <a href="products.html" class="hover:text-brand-gold transition">产品与服务</a>
+        <a href="about.html" class="text-brand-gold border-b-2 border-brand-gold pb-1">关于天鼎</a>
+        <a href="b2b.html" class="hover:text-brand-gold transition">渠道合作</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 顶部 Hero 区 -->
+  <section class="bg-brand-green text-brand-cream py-20 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-wide">科技赋能 · 品质溯源</h1>
+      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
+        立足香港，背靠内地高科技生产基地。我们致力于将天然、安全的大健康产品推向全球，打造从研发到交付的全链路跨境生态。
+      </p>
+    </div>
+  </section>
+
+  <!-- 核心内容区 -->
+  <section class="max-w-5xl mx-auto px-6 py-20 space-y-16">
+
+    <!-- 模块 1：创始人背景 -->
+    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center">
+      <div class="w-full md:w-1/2 aspect-square bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10 flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
+        <!-- 如果有创始人照片，把下方这行替换为 <img> 标签 -->
+        [ 创始人照片 ]
+      </div>
+      <div class="flex-1">
+        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">国际视野 · 科研驱动</div>
+        <h2 class="text-2xl font-bold text-brand-green mb-4">海归创始人 · 国际化研发理念</h2>
+        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+          天鼎国际创始人毕业于美国知名学府。带着国际前沿的健康理念与科研视野回国，致力于将西方严谨的研发体系与东方传统的植物萃取智慧相结合。从配方研发到品控管理，均对标国际标准，为全球消费者提供真正有科学依据的大健康产品。
+        </p>
+      </div>
+    </div>
+
+    <!-- 模块 2：佳木斯生产基地 -->
+    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 flex flex-col md:flex-row-reverse gap-10 items-center">
+      <div class="w-full md:w-1/2 aspect-[4/3] bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10 flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
+        <!-- 可以放一张高科技工厂/生产线的照片 -->
+        [ 佳木斯生产基地图 ]
+      </div>
+      <div class="flex-1">
+        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">硬核产能 · 国企背书</div>
+        <h2 class="text-2xl font-bold text-brand-green mb-4">黑龙江佳木斯 · 大健康产业园</h2>
+        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+          天鼎在黑龙江佳木斯大健康产业园拥有深度合作的生产与研发基地。合作企业具备强大的国企背景，不仅拥有行业领先的高科技生产与研发设备，更取得了国家严格审批的<strong>食品生产许可授权</strong>。
+        </p>
+        <ul class="space-y-3 text-sm font-medium text-brand-green mb-8">
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 深度合作的国企背景生产基地</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 一整套高科技提取与研发设备</li>
+          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 合法合规的食品生产许可资质</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 模块 3：数据/实力展示条 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      <div class="bg-brand-green rounded-xl p-8 text-brand-cream shadow-lg">
+        <div class="text-4xl font-bold text-brand-gold mb-2">100%</div>
+        <div class="text-sm">合法合规生产</div>
+      </div>
+      <div class="bg-brand-green rounded-xl p-8 text-brand-cream shadow-lg">
+        <div class="text-4xl font-bold text-brand-gold mb-2">高新</div>
+        <div class="text-sm">科技研发设备</div>
+      </div>
+      <div class="bg-brand-green rounded-xl p-8 text-brand-cream shadow-lg">
+        <div class="text-4xl font-bold text-brand-gold mb-2">全球</div>
+        <div class="text-sm">海外市场视野</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 底部合规声明 -->
+  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm mb-4 leading-relaxed">
+        香港天鼎国际贸易有限公司。本页内容仅作公司背景与业务能力介绍。
+      </p>
+      <p class="text-xs">© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED</p>
+    </div>
+  </footer>
+
+</body>
+</html>
