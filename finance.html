@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天鼎国际 - 财务与合同审计底稿系统 2.0</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { green: '#1F3A2E', greenlight: '#2D5141', gold: '#B08D57', goldlight: '#D9C29A', cream: '#F7F4EC', ink: '#23201B' }
+        },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+  body { background-color: #F7F4EC; color: #23201B; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #F7F4EC; }
+  ::-webkit-scrollbar-thumb { background: #D9C29A; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #B08D57; }
+  .glass-header { background: rgba(31, 58, 46, 0.95); backdrop-filter: blur(10px); }
+  .tr-hover:hover { background-color: rgba(176, 141, 87, 0.05); }
+</style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <!-- 顶部导航 -->
+  <header class="glass-header text-white sticky top-0 z-40 shadow-lg border-b border-brand-greenlight">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded bg-brand-gold flex items-center justify-center text-brand-green font-bold text-xl shadow-inner font-serif">鼎</div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-base sm:text-lg tracking-wide text-brand-cream">天鼎国际 · 财务与合同管理后台</h1>
+            <span class="text-[10px] px-2 py-0.5 rounded border border-brand-goldlight/50 text-brand-goldlight font-medium">SME-FRS 2.0 引擎</span>
+          </div>
+          <p class="text-xs text-brand-goldlight/70 mt-0.5">HK TIANDING INTERNATIONAL TRADE LIMITED | 云端同步</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex items-center bg-brand-greenlight/50 border border-brand-greenlight rounded px-3 py-1.5">
+          <span class="text-xs text-brand-goldlight/70 mr-2">核算主体:</span>
+          <select id="companySelect" class="bg-transparent text-sm font-semibold text-white focus:outline-none cursor-pointer">
+            <option value="comp_tianding_01">香港天鼎國際貿易有限公司</option>
+          </select>
+        </div>
+        <button onclick="pushToCloud()" id="btnSync" class="px-3 py-1.5 rounded bg-brand-gold hover:bg-brand-goldlight text-brand-green text-xs font-bold transition shadow-sm flex items-center gap-1">
+          <span>☁️</span> <span id="syncBtnText">同步至 Google Sheets</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 审计状态门禁横幅 -->
+  <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pt-5">
+    <div class="rounded-lg p-4 border-2 border-amber-400 bg-amber-50 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-lg shrink-0">!</div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-xs font-bold rounded bg-amber-600 text-white">草稿暂记配平模式</span>
+            <h3 class="font-bold text-sm text-amber-950">当前已勾稽 1/2 笔凭证 — 尚有 1 笔流水待补齐贸易发票</h3>
+          </div>
+          <p class="text-xs text-amber-900/70 mt-1">四张表已通过暂记科目强制配平（资产负债表差额 = HK$ 0.00）。补齐清单中缺失的凭证后，即可解锁最终审计定稿表。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主工作区 -->
+  <main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 grid grid-cols-1 xl:grid-cols-12 gap-6">
+
+    <!-- 左侧：采集舱与录入表单 (4列) -->
+    <div class="xl:col-span-4 space-y-6">
+      
+      <!-- 模块 1：凭证附件与零用金/固资采集 -->
+      <div class="bg-white rounded-lg border border-brand-goldlight/30 shadow-sm overflow-hidden">
+        <div class="px-4 py-3 bg-brand-cream border-b border-brand-goldlight/30 flex justify-between items-center">
+          <h2 class="font-bold text-sm text-brand-green">📁 凭证与台账采集舱</h2>
+        </div>
+        <div class="p-4 grid grid-cols-2 gap-3 text-xs">
+          <div onclick="openModal('bank')" class="border border-dashed border-brand-goldlight/50 rounded p-3 text-center hover:bg-brand-cream transition cursor-pointer">
+            <div class="font-bold text-brand-green mb-1">① 银行月结单</div>
+            <p class="text-[10px] text-brand-ink/60">导入流水 & 凭证</p>
+          </div>
+          <div onclick="openModal('pettyCash')" class="border border-dashed border-brand-goldlight/50 rounded p-3 text-center hover:bg-brand-cream transition cursor-pointer">
+            <div class="font-bold text-brand-green mb-1">② 零用金账本</div>
+            <p class="text-[10px] text-brand-ink/60">录入现金小额收支</p>
+          </div>
+          <div onclick="openModal('fixedAsset')" class="border border-dashed border-brand-goldlight/50 rounded p-3 text-center hover:bg-brand-cream transition cursor-pointer">
+            <div class="font-bold text-brand-green mb-1">③ 固定资产台账</div>
+            <p class="text-[10px] text-brand-ink/60">录入资产与折旧</p>
+          </div>
+          <div onclick="openModal('fxRate')" class="border border-dashed border-brand-goldlight/50 rounded p-3 text-center hover:bg-brand-cream transition cursor-pointer">
+            <div class="font-bold text-brand-green mb-1">④ HSBC 汇率表</div>
+            <p class="text-[10px] text-brand-ink/60">每周一 09:30 定盘</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模块 2：流水录入表单 -->
+      <div class="bg-white rounded-lg border border-brand-goldlight/30 shadow-sm overflow-hidden">
+        <div class="px-4 py-3 bg-brand-cream border-b border-brand-goldlight/30">
+          <h2 class="font-bold text-sm text-brand-green">银行流水与凭证录入 (多币种)</h2>
+        </div>
+        <form id="txForm" onsubmit="handleAddTx(event)" class="p-4 space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-brand-ink/70 font-medium mb-1">交易日期</label>
+              <input type="date" id="txDate" required class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded bg-brand-cream/50 focus:ring-1 focus:ring-brand-gold outline-none" value="2026-03-04">
+            </div>
+            <div>
+              <label class="block text-brand-ink/70 font-medium mb-1">收支方向</label>
+              <select id="txDir" class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded bg-brand-cream/50 outline-none font-semibold">
+                <option value="dep">存入 (Deposit)</option>
+                <option value="wd">支出 (Withdrawal)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-3 gap-3 bg-brand-cream/40 p-3 rounded border border-brand-goldlight/20">
+            <div class="col-span-1">
+              <label class="block text-brand-ink/70 font-medium mb-1">币种</label>
+              <select id="txCcy" class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded font-bold font-mono">
+                <option>HKD</option>
+                <option>USD</option>
+                <option>CNY</option>
+                <option>EUR</option>
+              </select>
+            </div>
+            <div class="col-span-2">
+              <label class="block text-brand-ink/70 font-medium mb-1">原币金额</label>
+              <input type="number" id="txAmt" step="0.01" required class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded font-mono font-bold" value="3500.00">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-brand-ink/70 font-medium mb-1">交易对手 / 客户名称</label>
+            <input type="text" id="txName" required class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded" value="BERLIN DIGITAL GMBH">
+          </div>
+          
+          <div>
+            <label class="block text-brand-ink/70 font-medium mb-1">交易摘要</label>
+            <input type="text" id="txDesc" required class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded" value="收到德国客户汇入款项">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-brand-ink/70 font-medium mb-1">会计科目代码</label>
+              <select id="txCat" class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded bg-orange-50 text-orange-800 font-semibold">
+                <option value="UNCLASSIFIED">⚠️ 待分类 (UNCLASSIFIED)</option>
+                <option value="REV_SERVICE">主营业务收入-服务</option>
+                <option value="COGS_PURCHASE">主营业务成本-采购</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-brand-ink/70 font-medium mb-1">凭证/合同编号 (Ref)</label>
+              <input type="text" id="txRef" class="w-full px-2 py-1.5 border border-brand-goldlight/50 rounded" placeholder="如: INV-2026-08">
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-2 bg-brand-green hover:bg-brand-greenlight text-brand-cream font-bold rounded transition mt-2">
+            保存流水并重算四表
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 右侧：报表与财务表 (8列) -->
+    <div class="xl:col-span-8 space-y-6">
+      
+      <!-- 警示清单区 -->
+      <div id="warningPanel" class="bg-amber-50 rounded-lg border border-amber-300 shadow-sm p-4 hidden">
+        <h3 class="font-bold text-xs text-amber-900 mb-2">待补齐凭证警示清单</h3>
+        <div id="warningList" class="space-y-2">
+          <!-- 动态生成 -->
+        </div>
+      </div>
+
+      <!-- 四表标签页 -->
+      <div class="bg-white rounded-lg border border-brand-goldlight/30 shadow-sm overflow-hidden">
+        <div class="flex border-b border-brand-goldlight/30 bg-brand-cream px-4 pt-3 gap-2 text-xs">
+          <button class="px-4 py-2 font-bold rounded-t bg-white text-brand-green border-t-2 border-brand-gold font-medium shadow-[0_-2px_5px_rgba(0,0,0,0.02)]">1. 流水总账 & 凭证勾兑</button>
+        </div>
+
+        <!-- 流水表格展示 -->
+        <div class="p-6">
+          <table class="w-full text-xs text-left">
+            <thead class="bg-brand-cream/50 text-brand-green border-y border-brand-goldlight/30">
+              <tr>
+                <th class="py-2.5 px-3 font-bold">日期</th>
+                <th class="py-2.5 px-3 font-bold">银行参考号</th>
+                <th class="py-2.5 px-3 font-bold">摘要</th>
+                <th class="py-2.5 px-3 font-bold text-right">原币金额</th>
+                <th class="py-2.5 px-3 font-bold">科目代码</th>
+                <th class="py-2.5 px-3 font-bold">凭证号</th>
+                <th class="py-2.5 px-3 font-bold text-center">勾兑状态</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerBody" class="divide-y divide-brand-goldlight/20">
+              <!-- 动态渲染 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 弹窗：各类台账录入 (极简实现) -->
+  <div id="modalContainer" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+      <div class="px-4 py-3 bg-brand-green text-brand-cream flex justify-between items-center">
+        <h3 id="modalTitle" class="font-bold text-sm">录入台账</h3>
+        <button onclick="closeModal()" class="text-white hover:text-brand-gold">&times;</button>
+      </div>
+      <div id="modalContent" class="p-4 text-xs space-y-3">
+        <!-- 动态内容 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div id="toast" class="fixed bottom-5 right-5 px-4 py-2 bg-brand-green text-brand-cream text-xs font-bold rounded shadow-lg hidden z-50"></div>
+
+  <script>
+    // ==========================================
+    // 1. 核心配置与数据结构 (2.0 架构)
+    // ==========================================
+    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbz8gHk8a7sQ39pOcF3jsfXsp5rYEJisyQsW6iAivsK2DbfLTHykf9EyfZuCzi6UoLP4/exec';
+    const ROOT_FOLDER_ID = '1WGyKD8j2V2QRxqB-PffUpwqAqZkHUFxo';
+
+    // 本地账套数据 (与 GAS 后端字段严格对应)
+    let db = {
+      entity: {
+        id: 'comp_tianding_01',
+        name_cn: '香港天鼎國際貿易有限公司',
+        name_en: 'HK TIANDING INTERNATIONAL TRADE LIMITED',
+        br_no: '78630568',
+        transactions: [
+          { date: '2025-11-10', ref: 'HSBC-2883-001', ccy: 'HKD', desc: '股东无息借款划入', dep: 445000.00, wd: 0, cat: 'LIAB_SH_LOAN_IN', doc_ref: 'SH-LOAN-TD01', status: '已核验' },
+          { date: '2026-03-04', ref: 'HSBC-EUR-260304', ccy: 'EUR', desc: '收到德国客户汇入款项', dep: 3500.00, wd: 0, cat: 'UNCLASSIFIED', doc_ref: '', status: '待核验' }
+        ],
+        petty_cash: [
+          { date: '2026-01-10', desc: '购买办公文具', in: 0, out: 150.00, doc_ref: 'PC-001' }
+        ],
+        fixed_assets: [
+          { name: 'MacBook Pro', date: '2025-11-15', cost: 15000, life: 3, residual: 5, doc_ref: 'INV-APPLE-01' }
+        ],
+        hsbc_weekly_rates: [
+          { week_id: 'W01', monday_date: '2026-03-02', USD: 7.8110, CNY: 1.0850, EUR: 8.4800 }
+        ]
+      }
+    };
+
+    // ==========================================
+    // 2. UI 渲染与交互逻辑
+    // ==========================================
+    function render() {
+      const tbody = document.getElementById('ledgerBody');
+      tbody.innerHTML = '';
+      let warnings = [];
+
+      db.entity.transactions.forEach((t, idx) => {
+        const isMissing = !t.doc_ref || t.cat === 'UNCLASSIFIED';
+        if (isMissing) warnings.push(t);
+
+        const tr = document.createElement('tr');
+        tr.className = isMissing ? 'bg-amber-50' : 'tr-hover';
+        tr.innerHTML = `
+          <td class="py-2 px-3 font-mono">${t.date}</td>
+          <td class="py-2 px-3 font-mono text-brand-ink/60">${t.ref}</td>
+          <td class="py-2 px-3">${t.desc}</td>
+          <td class="py-2 px-3 text-right font-mono font-bold ${t.dep > 0 ? 'text-emerald-600' : 'text-rose-600'}">
+            ${t.ccy} ${t.dep > 0 ? '+' : '-'}${t.dep || t.wd}
+          </td>
+          <td class="py-2 px-3 font-mono text-brand-green">${t.cat}</td>
+          <td class="py-2 px-3 font-mono">${t.doc_ref || '<span class="text-amber-500 font-bold">缺失</span>'}</td>
+          <td class="py-2 px-3 text-center">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isMissing ? 'bg-amber-200 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">${t.status}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // 渲染警示面板
+      const warnPanel = document.getElementById('warningPanel');
+      const warnList = document.getElementById('warningList');
+      if (warnings.length > 0) {
+        warnPanel.classList.remove('hidden');
+        warnList.innerHTML = warnings.map(w => `
+          <div class="bg-white rounded border border-amber-200 p-3 flex justify-between items-center text-xs">
+            <div>
+              <span class="font-mono font-bold text-amber-700 mr-2">${w.date}</span>
+              <span class="font-bold">${w.ccy} ${w.dep || w.wd}</span> 
+              <span class="text-brand-ink/60 ml-2">${w.desc}</span>
+            </div>
+            <button onclick="fixWarning('${w.ref}')" class="px-3 py-1 bg-brand-gold text-white font-bold rounded shadow hover:bg-brand-goldlight transition">补齐凭证</button>
+          </div>
+        `).join('');
+      } else {
+        warnPanel.classList.add('hidden');
+      }
+    }
+
+    function handleAddTx(e) {
+      e.preventDefault();
+      const dir = document.getElementById('txDir').value;
+      const ref = 'TX-' + Date.now().toString().slice(-6);
+      
+      const newTx = {
+        date: document.getElementById('txDate').value,
+        ref: ref,
+        ccy: document.getElementById('txCcy').value,
+        desc: document.getElementById('txDesc').value,
+        dep: dir === 'dep' ? parseFloat(document.getElementById('txAmt').value) : 0,
+        wd: dir === 'wd' ? parseFloat(document.getElementById('txAmt').value) : 0,
+        cat: document.getElementById('txCat').value,
+        doc_ref: document.getElementById('txRef').value,
+        status: (!document.getElementById('txRef').value || document.getElementById('txCat').value === 'UNCLASSIFIED') ? '待核验' : '已核验'
+      };
+
+      db.entity.transactions.unshift(newTx);
+      render();
+      showToast('流水已添加至本地暂存池！');
+      document.getElementById('txForm').reset();
+    }
+
+    function fixWarning(ref) {
+      const tx = db.entity.transactions.find(t => t.ref === ref);
+      if (tx) {
+        tx.cat = 'REV_SERVICE'; // 默认修正为收入，实际应用中可弹窗选择
+        tx.doc_ref = 'INV-FIXED-001';
+        tx.status = '已核验';
+        render();
+        showToast('凭证已补齐，解锁定稿状态！');
+      }
+    }
+
+    // ==========================================
+    // 3. Google Sheets 云端同步逻辑
+    // ==========================================
+    async function pushToCloud() {
+      const btn = document.getElementById('btnSync');
+      const btnText = document.getElementById('syncBtnText');
+      btn.disabled = true;
+      btnText.textContent = '正在同步...';
+      btn.classList.add('opacity-70');
+
+      const payload = {
+        action: 'saveEntity',
+        root_folder_id: ROOT_FOLDER_ID,
+        entity: db.entity
+      };
+
+      try {
+        const res = await fetch(GAS_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // GAS 限制，必须用 text/plain 防止跨域预检
+          body: JSON.stringify(payload)
+        });
+        
+        const result = await res.json();
+        if (result.status === 'ok') {
+          showToast('✅ 成功同步至 Google Sheets！');
+          console.log('云端表格 URL:', result.sheet_url);
+          // 如果需要在页面上显示云端链接，可以新建一个 <a> 标签动态挂载
+        } else {
+          showToast('❌ 同步失败: ' + result.message, true);
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('❌ 网络或跨域错误，请确保 GAS 部署权限为“所有人”', true);
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = '同步至 Google Sheets';
+        btn.classList.remove('opacity-70');
+      }
+    }
+
+    // ==========================================
+    // 4. 辅助功能 (Modal & Toast)
+    // ==========================================
+    function openModal(type) {
+      const modal = document.getElementById('modalContainer');
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
+      
+      if (type === 'bank') { title.textContent = '① 导入银行流水'; content.innerHTML = '<p class="text-brand-ink/60">请直接使用左侧表单手动录入，或接入 CSV 解析。</p>'; }
+      if (type === 'pettyCash') { title.textContent = '② 零用金账本'; content.innerHTML = '<p class="text-brand-ink/60">零用金录入表单待开发，直接存入 JSON 的 petty_cash 字段。</p>'; }
+      if (type === 'fixedAsset') { title.textContent = '③ 固定资产台账'; content.innerHTML = '<p class="text-brand-ink/60">固定资产录入表单待开发，直接存入 JSON 的 fixed_assets 字段。</p>'; }
+      if (type === 'fxRate') { title.textContent = '④ HSBC 汇率表'; content.innerHTML = '<p class="text-brand-ink/60">当前汇率表数据将在同步时自动写入云端。</p>'; }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('modalContainer').classList.add('hidden');
+      document.getElementById('modalContainer').classList.remove('flex');
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.className = `fixed bottom-5 right-5 px-4 py-2 text-xs font-bold rounded shadow-lg z-50 ${isError ? 'bg-rose-600 text-white' : 'bg-brand-green text-brand-cream'}`;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    // 初始化
+    window.onload = render;
+  </script>
+</body>
+</html>
