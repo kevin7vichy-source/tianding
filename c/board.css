@@ -42,3 +42,70 @@ footer .slogan { color: var(--gold); font-size: 14px; letter-spacing: 4px; margi
 footer p { color: var(--text-muted); font-size: 12px; margin-bottom: 6px; opacity: 0.7; }
 footer p:last-child { margin-top: 16px; opacity: 0.5; }
 @media (max-width: 600px) { .card.login { padding: 24px; } main#main { align-items: flex-start; padding-top: 20px; } }
+
+
+/* =========================================
+   天鼎看板内部页面样式 (修复裸奔)
+   ========================================= */
+
+/* 顶部问候与导航 */
+.hello { margin-bottom: 20px; }
+.hello h1 { font-size: 26px; color: #F7F4EC; font-weight: 600; margin-bottom: 8px; }
+.hello .meta { font-size: 13px; color: #A9A294; }
+.nav { display: flex; gap: 10px; margin: 20px 0; overflow-x: auto; border-bottom: 1px solid rgba(247,244,236,0.15); padding-bottom: 15px; }
+.nav a { padding: 8px 16px; border-radius: 4px; background: rgba(255,255,255,0.05); color: #A9A294; text-decoration: none; font-size: 14px; transition: all 0.3s; white-space: nowrap; }
+.nav a.on, .nav a:hover { background: #B08D57; color: #1F3A2E; font-weight: bold; }
+
+/* 模块标题 */
+.sec { margin-bottom: 40px; }
+.sec-title { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid rgba(247,244,236,0.15); padding-bottom: 12px; margin-bottom: 20px; }
+.sec-title h2 { font-size: 20px; color: #B08D57; }
+.sec-title span { font-size: 12px; color: #A9A294; letter-spacing: 1px; }
+
+/* 卡片基础样式 */
+.card { background: #2D5141; border: 1px solid rgba(247,244,236,0.1); border-radius: 8px; padding: 24px; margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+/* 网格排版 */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.kv .k { font-size: 13px; color: #A9A294; margin-bottom: 6px; }
+.kv .v { font-size: 16px; font-weight: 500; color: #F7F4EC; }
+.lt { color: #A9A294; font-size: 13px; }
+
+/* 倒计时模块 */
+.count .grid { align-items: center; }
+.big { font-size: 28px; font-weight: bold; color: #B08D57; font-family: monospace; margin-top: 4px; }
+
+/* 进度条/状态标签 */
+.prog { font-weight: bold; color: #B08D57; font-size: 15px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.chips span { padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(247,244,236,0.15); font-size: 12px; color: #F7F4EC; }
+
+/* 表格样式 (修复挤在一起的问题) */
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(247,244,236,0.1); color: #F7F4EC; }
+th { color: #B08D57; font-weight: 500; background: rgba(0,0,0,0.2); }
+tr:last-child td { border-bottom: none; }
+td.st { font-weight: bold; }
+.st-done { color: #4ade80; }
+.st-reviewing { color: #facc15; }
+.st-pending { color: #94a3b8; }
+.st-fix { color: #f87171; }
+
+/* 诊断卡片 */
+.diag h2 { font-size: 16px; color: #B08D57; margin-bottom: 12px; }
+.diag p { margin-bottom: 8px; font-size: 14px; line-height: 1.6; color: #F7F4EC; }
+.muted { color: #A9A294; font-size: 13px; }
+
+/* 底部操作栏 */
+.actions { display: flex; align-items: center; gap: 16px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(247,244,236,0.15); }
+button.ghost { background: transparent; border: 1px solid rgba(247,244,236,0.3); color: #F7F4EC; padding: 8px 16px; border-radius: 4px; cursor: pointer; transition: all 0.3s; }
+button.ghost:hover { background: rgba(255,255,255,0.1); }
+
+/* 针对移动端的表格适配 */
+@media (max-width: 600px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+  tr { border: 1px solid rgba(247,244,236,0.15); margin-bottom: 15px; border-radius: 6px; }
+  td { border: none; border-bottom: 1px solid rgba(247,244,236,0.1); position: relative; padding-left: 50%; text-align: right; }
+  td:before { content: attr(data-l); position: absolute; left: 12px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; color: #B08D57; text-align: left; }
+}
