@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服务流程 - 香港天鼎国际贸易</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<style> body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; } </style>
+</head>
+<body class="antialiased">
 
+  <!-- 导航栏 (已高亮当前页) -->
+  <header class="bg-brand-green text-brand-cream sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center h-full">
+        <img src="assets/logo-horizontal-white.svg" alt="天鼎国际" class="h-10 w-auto object-contain">
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-brand-gold transition">首页</a>
+        <a href="products.html" class="hover:text-brand-gold transition">产品与服务</a>
+        <a href="science.html" class="hover:text-brand-gold transition">科学与溯源</a>
+        <a href="process.html" class="text-brand-gold border-b-2 border-brand-gold pb-1">服务流程</a>
+        <a href="about.html" class="hover:text-brand-gold transition">关于天鼎</a>
+        <a href="b2b.html" class="hover:text-brand-gold transition">渠道合作</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero 区 -->
+  <section class="bg-brand-green text-brand-cream py-20 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-wide">透明高效 · 全链路服务</h1>
+      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
+        从需求对接、合规生产到跨境交付，我们以标准化的流程管理，确保每一次合作都清晰可控、安全落地。
+      </p>
+    </div>
+  </section>
+
+  <!-- 服务流程时间轴 -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-2xl font-bold text-brand-green mb-3">我们的服务步骤</h2>
+      <p class="text-sm text-brand-ink/60">以专业严谨的态度，把控每一个交付环节</p>
+    </div>
+
+    <!-- 流程卡片 (桌面端横向，移动端纵向) -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+      <!-- 背景连接线 (仅桌面端显示) -->
+      <div class="hidden md:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-brand-gold/30 z-0"></div>
+
+      <!-- 步骤 1 -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">01</div>
+        <h3 class="font-bold text-brand-green mb-2">需求沟通</h3>
+        <p class="text-xs text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求，提供专业建议。</p>
+      </div>
+
+      <!-- 步骤 2 -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">02</div>
+        <h3 class="font-bold text-brand-green mb-2">打样与签约</h3>
+        <p class="text-xs text-brand-ink/70 leading-relaxed">提供样品确认品质，双方签署正式合作协议，保障权益。</p>
+      </div>
+
+      <!-- 步骤 3 -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">03</div>
+        <h3 class="font-bold text-brand-green mb-2">生产与品控</h3>
+        <p class="text-xs text-brand-ink/70 leading-relaxed">在佳木斯基地严格按照标准投产，并进行多轮质量检验。</p>
+      </div>
+
+      <!-- 步骤 4 -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">04</div>
+        <h3 class="font-bold text-brand-green mb-2">跨境交付</h3>
+        <p class="text-xs text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配，提供端到端跟踪支持。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部声明 -->
+  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
+    <div class="max-w-4xl mx-auto px-6 text-center text-sm">
+      © 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED
+    </div>
+  </footer>
+
+</body>
+</html>
