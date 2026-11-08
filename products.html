@@ -105,19 +105,49 @@
 </style>
   </header>
 
-  <!-- 首屏：视频背景展示 -->
-  <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-    <!-- 如果有视频，取消下方注释并修改路径 -->
-    <!-- <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0" src="assets/factory.mp4"></video> -->
+   <!-- 首屏：全屏溯源视频背景 -->
+  <section class="relative h-[80vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
+    <!-- 视频背景 -->
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      poster="assets/img/purple-rice.webp" 
+      class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="assets/img/trace.mp4" type="video/mp4">
+    </video>
     
-    <!-- 备用背景大图 (如果没有视频，用这张图) -->
-    <div class="absolute inset-0 z-0 bg-brand-green/90" style="background-image: url('assets/img/hero.webp'); background-size: cover; background-position: center;"></div>
-    
-    <div class="relative z-10 text-center px-6">
+    <!-- 深色遮罩，保证文字清晰 -->
+    <div class="absolute inset-0 bg-brand-green/70 z-10"></div>
+
+    <!-- 视频上的悬浮文字 -->
+    <div class="relative z-20 text-center px-6 mb-12 mt-10">
+      <div class="inline-block px-4 py-1 bg-brand-gold/20 border border-brand-gold text-brand-gold text-xs font-bold tracking-widest rounded-full mb-6">
+        FROM SOURCE TO PRODUCT
+      </div>
       <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-6 tracking-widest drop-shadow-lg">自然饋贈 · 科學萃取</h1>
-      <p class="text-lg md:text-xl text-brand-cream/90 max-w-2xl mx-auto drop-shadow-md">
-        專注紫米及藍莓來源花青素系列產品的研發與海外市場銷售，提供從源頭到交付的全鏈路支持。
+      <p class="text-lg text-brand-cream/90 max-w-2xl mx-auto drop-shadow-md">
+        從建三江 50 萬畝紫稻基地，到哈工大第六代工業 4.0 低溫萃取，為您呈現花青素的全生命週期。
       </p>
+    </div>
+
+    <!-- 悬浮在视频底部的三大核心数据 -->
+    <div class="relative z-20 w-full max-w-5xl px-6 pb-8 mt-auto">
+      <div class="bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-brand-cream">
+        <div>
+          <div class="text-brand-gold text-3xl font-bold mb-1">50萬畝</div>
+          <div class="text-xs text-brand-cream/70">建三江專屬紫稻基地</div>
+        </div>
+        <div class="border-y md:border-y-0 md:border-x border-white/20 py-4 md:py-0">
+          <div class="text-brand-gold text-3xl font-bold mb-1">97%</div>
+          <div class="text-xs text-brand-cream/70">花青素高活性保留率</div>
+        </div>
+        <div>
+          <div class="text-brand-gold text-3xl font-bold mb-1">9元/克</div>
+          <div class="text-xs text-brand-cream/70">顛覆性原料提取成本</div>
+        </div>
+      </div>
     </div>
   </section>
 
