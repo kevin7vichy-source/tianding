@@ -18,17 +18,9 @@
 </script>
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
-  .product-card { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.15); }
-  .product-card:hover .card-img { transform: scale(1.05); }
-  .card-img { transition: transform 0.6s ease; }
   
-  /* 统一渐显动画类名 */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* 导航栏及手机折叠 */
-  .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  /* 全局导航与底部样式（防闪烁） */
+  .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
   .nav-links { display: flex; align-items: center; gap: 32px; font-size: 16px; font-weight: 600; }
   .nav-links a { color: #1F3A2E; text-decoration: none; transition: all 0.3s; }
@@ -37,39 +29,27 @@
   .lang-switch { display: flex; align-items: center; gap: 12px; border-left: 1px solid #ccc; padding-left: 24px; margin-left: 8px; font-size: 14px; }
   .lang-switch a { color: #666; }
   .lang-switch a.active { color: #B08D57; font-weight: bold; }
-  
   .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
   @media (max-width: 900px) {
     .menu-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
     .nav-links.show { display: flex; }
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; width: 100%; }
   }
+
+  /* 动效 */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .product-card { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.15); }
+  .product-card:hover .card-img { transform: scale(1.05); }
+  .card-img { transition: transform 0.6s ease; }
 </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
-  <!-- 导航栏 -->
-  <header class="custom-nav">
-    <div class="nav-container">
-      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎國際" style="height: 40px;"></a>
-      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
-      <div class="nav-links">
-        <a href="index.html">首頁</a>
-        <a href="products.html" class="active">產品與服務</a>
-        <a href="science.html">科學與溯源</a>
-        <a href="process.html">服務流程</a>
-        <a href="about.html">關於天鼎</a>
-        <a href="b2b.html">渠道合作</a>
-        <a href="contact.html">聯絡我們</a>
-        <div class="lang-switch">
-          <a href="products.html" class="active">繁</a>
-          <a href="zh-hans/products.html">简</a>
-          <a href="en/products.html">EN</a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!-- 自动化占位符：全局导航 -->
+  <div id="global-header"></div>
 
   <!-- 首屏：全屏溯源视频背景 -->
   <section class="relative h-[80vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
@@ -169,24 +149,11 @@
     </div>
   </section>
 
- <!-- 终极纯代码绘制的底部 -->
-<footer style="background-color: #111f19; padding: 40px 20px; border-top: 1px solid rgba(176,141,87,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-  
-  <!-- 用代码画出来的 Logo：金色方块 + 鼎字 + 英文，绝对不裂图 -->
-  <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px;">
-    <div style="width: 42px; height: 42px; background-color: #B08D57; color: #1F3A2E; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-family: serif; font-size: 24px; font-weight: bold;">鼎</div>
-    <div style="text-align: left;">
-      <div style="color: #F7F4EC; font-size: 22px; font-weight: bold; letter-spacing: 2px; line-height: 1.2;">天鼎國際</div>
-      <div style="color: #B08D57; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;">TIANDING</div>
-    </div>
-  </div>
+  <!-- 自动化占位符：全局底部 -->
+  <div id="global-footer" class="mt-auto"></div>
 
-  <!-- 绝对居中的地址和版权 -->
-  <div style="color: rgba(247, 244, 236, 0.6); font-size: 12px; line-height: 1.8; max-width: 800px;">
-    <p style="margin-bottom: 8px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-    <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color: #B08D57; text-decoration: none;">tiandingtr@gmail.com</a></p>
-  </div>
-</footer>
+  <!-- 引入全局组件脚本 -->
+  <script src="assets/global.js"></script>
 
   <!-- 滚动入场特效脚本 -->
   <script>
@@ -203,5 +170,6 @@
       observer.observe(el);
     });
   </script>
+
 </body>
 </html>
