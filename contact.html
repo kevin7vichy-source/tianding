@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant-HK">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>联络我们 - 香港天鼎国际贸易</title>
+<title>聯絡我們 - 香港天鼎國際貿易</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
@@ -21,11 +21,11 @@
   .lang-switch a { color: #666; }
   .lang-switch a.active { color: #B08D57; font-weight: bold; }
   .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .menu-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
     .nav-links.show { display: flex; }
-    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
+    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; width: 100%; }
   }
   /* 输入框流光特效 */
   .input-group input, .input-group textarea { background: transparent; border: none; border-bottom: 2px solid #ccc; transition: all 0.3s; outline: none; width: 100%; padding: 10px 0; }
@@ -40,7 +40,7 @@
 
   <header class="custom-nav">
     <div class="nav-container">
-      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;"></a>
+      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎國際" style="height: 40px;"></a>
       <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
       <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -60,32 +60,32 @@
   </header>
 
   <main class="flex-grow grid grid-cols-1 md:grid-cols-2 relative">
-    <!-- 左侧：深绿信息区（保持不变） -->
+    <!-- 左侧：深绿信息区 -->
     <div class="bg-brand-green text-brand-cream p-12 md:p-24 flex flex-col justify-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
       <div class="relative z-10">
-        <h1 class="text-4xl font-bold mb-4">联络我们</h1>
-        <p class="text-brand-cream/70 mb-12">无论您是寻求大健康产品合作，还是咨询跨境贸易支持，我们的专业团队随时为您服务。</p>
+        <h1 class="text-4xl font-bold mb-4">聯絡我們</h1>
+        <p class="text-brand-cream/70 mb-12">無論您是尋求大健康產品合作，還是諮詢跨境貿易支持，我們的專業團隊隨時為您服務。</p>
         
         <div class="space-y-8">
           <div class="flex items-start gap-4">
             <span class="text-brand-gold text-2xl mt-1">📍</span>
             <div>
-              <div class="font-bold text-lg mb-1">香港办公地址</div>
-              <p class="text-sm text-brand-cream/80">香港沙田黄竹洋街华联工业大厦B座6楼633室</p>
+              <div class="font-bold text-lg mb-1">香港辦公地址</div>
+              <p class="text-sm text-brand-cream/80">香港沙田黃竹洋街華聯工業大廈B座6樓633室<br><span class="text-xs opacity-70">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</span></p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="text-brand-gold text-2xl mt-1">✉️</span>
             <div>
-              <div class="font-bold text-lg mb-1">商务邮箱</div>
+              <div class="font-bold text-lg mb-1">商務郵箱</div>
               <p class="text-sm text-brand-cream/80">tiandingtr@gmail.com</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <span class="text-brand-gold text-2xl mt-1">📞</span>
             <div>
-              <div class="font-bold text-lg mb-1">电话 / WhatsApp</div>
+              <div class="font-bold text-lg mb-1">電話 / WhatsApp</div>
               <p class="text-sm text-brand-cream/80">+852 5261 2799</p>
             </div>
           </div>
@@ -93,33 +93,39 @@
       </div>
     </div>
 
-    <!-- 右侧：表单区（改为悬浮精美卡片） -->
+    <!-- 右侧：表单区 -->
     <div class="bg-[#F7F4EC] p-8 md:p-16 flex flex-col justify-center items-center">
       <div class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(31,58,46,0.1)] border border-gray-100 p-8 md:p-12 w-full max-w-lg">
-        <h2 class="text-2xl font-bold text-brand-green mb-8 text-center">立即开启商务洽谈</h2>
+        <h2 class="text-2xl font-bold text-brand-green mb-8 text-center">立即開啟商務洽談</h2>
         <form class="space-y-6" action="mailto:tiandingtr@gmail.com" method="post" enctype="text/plain">
           <div class="input-group">
-            <label class="text-xs font-bold text-gray-500 block mb-2">您的称呼</label>
-            <input type="text" name="name" placeholder="例如：陈先生 / Ms. Li" required>
+            <label class="text-xs font-bold text-gray-500 block mb-2">您的稱呼</label>
+            <input type="text" name="name" placeholder="例如：陳先生 / Ms. Li" required>
           </div>
           <div class="input-group">
-            <label class="text-xs font-bold text-gray-500 block mb-2">联系邮箱 / 电话</label>
-            <input type="text" name="contact" placeholder="您的联系方式" required>
+            <label class="text-xs font-bold text-gray-500 block mb-2">聯絡郵箱 / 電話</label>
+            <input type="text" name="contact" placeholder="您的聯繫方式" required>
           </div>
           <div class="input-group">
-            <label class="text-xs font-bold text-gray-500 block mb-2">合作意向 / 咨询内容</label>
-            <textarea name="message" rows="4" placeholder="请简要描述您的业务需求..." required></textarea>
+            <label class="text-xs font-bold text-gray-500 block mb-2">合作意向 / 諮詢內容</label>
+            <textarea name="message" rows="4" placeholder="請簡要描述您的業務需求..." required></textarea>
           </div>
           <button type="submit" class="w-full py-4 mt-4 bg-brand-green hover:bg-brand-green/90 text-brand-cream font-bold rounded-lg shadow-lg transition transform hover:-translate-y-1">
-            发送邮件咨询
+            發送郵件諮詢
           </button>
         </form>
       </div>
     </div>
   </main>
 
-  <footer class="bg-brand-green text-brand-cream/60 py-6 text-center text-xs">
-    © 2026 香港天鼎国际贸易有限公司 | 本页面仅作业务洽谈，不构成商业承诺。
+  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+      <img src="assets/logo-horizontal-white.svg" alt="天鼎 TIANDING" class="h-10">
+      <div class="text-center md:text-right text-xs">
+        <p class="mb-1">Flat 4(20), 4/F, Block D, Tuen Mun Industrial Centre, No.2 San Ping Circuit, Tuen Mun, New Territories.</p>
+        <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" class="text-brand-gold hover:text-white transition">tiandingtr@gmail.com</a></p>
+      </div>
+    </div>
   </footer>
 
   <!-- 悬浮 WhatsApp 按钮 -->
