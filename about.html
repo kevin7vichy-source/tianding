@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant-HK">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +30,11 @@
   .lang-switch a { color: #666; }
   .lang-switch a.active { color: #B08D57; font-weight: bold; }
   .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .menu-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
     .nav-links.show { display: flex; }
-    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
+    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; width: 100%; }
   }
 
   /* 动效 */
@@ -78,18 +78,15 @@
     </div>
   </section>
 
-  <!-- 创始人模块：左图右文（已修复排版） -->
+  <!-- 创始人模块 -->
   <section class="max-w-6xl mx-auto px-6 py-24 overflow-hidden">
     <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-      <!-- 左侧照片：强制固定比例 -->
       <div class="w-full md:w-5/12 shrink-0 reveal">
         <div class="img-hover-zoom aspect-[4/5] bg-gray-200 border border-brand-gold/20 shadow-2xl relative w-full">
-          <!-- 直接读取你上传的创始人照片 -->
           <img src="assets/img/founder.jpg" alt="海歸創始人" class="absolute inset-0 w-full h-full object-cover">
         </div>
       </div>
       
-      <!-- 右侧文字：自适应剩余空间 -->
       <div class="w-full md:w-7/12 reveal" style="transition-delay: 0.2s;">
         <h2 class="text-3xl font-bold text-brand-green mb-6 leading-snug">海歸創始人<br>國際化研發理念</h2>
         <p class="text-brand-gold font-bold text-lg md:text-xl italic mb-6 border-l-4 border-brand-gold pl-4 leading-relaxed">
@@ -106,9 +103,8 @@
     </div>
   </section>
 
-  <!-- 生产基地模块：深色背景 + 毛玻璃卡片 -->
+  <!-- 生产基地模块 -->
   <section class="bg-brand-green text-brand-cream py-24 relative overflow-hidden">
-    <!-- 装饰背景 -->
     <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-gold/5 rounded-full blur-3xl"></div>
 
@@ -118,24 +114,24 @@
         <p class="text-brand-cream/70">依託國企背景與高科技設備，打造合規源頭產能</p>
       </div>
 
-           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- 卡片 1：科研与标准 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 卡片 1 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal">
           <div class="text-brand-gold text-4xl mb-4">🏛️</div>
-          <h3 class="text-xl font-bold mb-3">国家级标准制定者</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">联合中国检验检疫科学研究院 (CAIQ) 等权威机构，牵头制定高活性花青素行业质量与检测标准，引领行业规范。</p>
+          <h3 class="text-xl font-bold mb-3">國家級標準制定者</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">聯合中國檢驗檢疫科學研究院 (CAIQ) 等權威機構，牽頭制定高活性花青素行業質量與檢測標準，引領行業規範。</p>
         </div>
-        <!-- 卡片 2：全球生态圈 -->
+        <!-- 卡片 2 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal" style="transition-delay: 0.1s;">
           <div class="text-brand-gold text-4xl mb-4">🌐</div>
-          <h3 class="text-xl font-bold mb-3">跨国产业生态矩阵</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">已与韩国农安联盟、吉林青晟药业等知名药企达成战略协作；立足同江口岸与中俄铁路大桥，共建跨境出海通道。</p>
+          <h3 class="text-xl font-bold mb-3">跨國產業生態矩陣</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">已與韓國農安聯盟、吉林青晟藥業等知名藥企達成戰略協作；立足同江口岸與中俄鐵路大橋，共建跨境出海通道。</p>
         </div>
-        <!-- 卡片 3：产能与财务 -->
+        <!-- 卡片 3 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal" style="transition-delay: 0.2s;">
           <div class="text-brand-gold text-4xl mb-4">📈</div>
-          <h3 class="text-xl font-bold mb-3">十亿级产业园底盘</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">万基生物大健康产业园总体规划占地 6 万平方米，总投资 10 亿元。一期已投产，年产高纯度花青素 2 吨，产值达 2 亿元。</p>
+          <h3 class="text-xl font-bold mb-3">十億級產業園底盤</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">萬基生物大健康產業園總體規劃佔地 6 萬平方米，總投資 10 億元。一期已投產，年產高純度花青素 2 噸，產值達 2 億元。</p>
         </div>
       </div>
     </div>
@@ -148,7 +144,6 @@
     </div>
   </footer>
 
-  <!-- 滚动动画脚本 -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
