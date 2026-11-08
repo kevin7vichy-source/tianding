@@ -163,33 +163,35 @@
     </div>
   </footer>
 
-  <!-- 绝对精准的滚动监听脚本 -->
+  <!-- 滚动监听脚本 -->
   <script>
     window.addEventListener('scroll', () => {
       const wrapper = document.querySelector('.timeline-wrapper');
       const line = document.getElementById('scrollLine');
       
-      // 获取时间轴容器的高度和距离顶部的距离
       const rect = wrapper.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // 核心算法：当容器的顶部到达屏幕的中间时，线开始画
-      // 当容器的底部到达屏幕的中间时，线刚好画完
+      // 计算滚动进度：当容器顶部到达屏幕一半，开始画线
       let fillHeight = (windowHeight / 2) - rect.top;
       
-      if (fillHeight < 0) {
-        fillHeight = 0;
-      } else if (fillHeight > rect.height) {
-        fillHeight = rect.height; // 绝对不超过容器高度
+      // 如果用户已经滑动到了最后一张卡片（04节点触发），强制线条铺满整个容器
+      const cards = document.querySelectorAll('.step-card');
+      const lastCard = cards[cards.length - 1];
+      const lastCardRect = lastCard.getBoundingClientRect();
+      
+      // 如果最后一张卡片已经出现，直接让线长等于全高
+      if (lastCardRect.top < windowHeight - 50) {
+        fillHeight = wrapper.offsetHeight;
+      } else {
+        if (fillHeight < 0) fillHeight = 0;
       }
       
       line.style.height = fillHeight + 'px';
 
       // 卡片浮现与节点发光
-      const cards = document.querySelectorAll('.step-card');
       cards.forEach(card => {
         const cardRect = card.getBoundingClientRect();
-        // 当卡片顶部到达屏幕下方 100px 时触发动画
         if (cardRect.top < windowHeight - 100) {
           card.classList.add('show');
         }
