@@ -19,7 +19,7 @@
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
   
-  /* 导航栏 */
+  /* 导航栏样式 */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
   .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang HK', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
@@ -88,7 +88,7 @@
   </section>
 
   <!-- 动态时间轴区 -->
-  <section class="max-w-4xl mx-auto px-6 py-24 relative">
+  <section class="max-w-4xl mx-auto px-6 pt-24 pb-32 relative"> 
     
     <!-- 背景与进度线 -->
     <div class="timeline-line-bg"></div>
@@ -99,16 +99,13 @@
       
       <!-- 步骤 1 -->
       <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
-        <!-- 左侧文字 (仅桌面端显示，且靠右对齐) -->
         <div class="hidden md:block text-right pt-2 pr-4">
           <h3 class="text-2xl font-bold text-brand-green mb-3">需求沟通</h3>
           <p class="text-sm text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求。根据海外市场的受众偏好，提供专业的选品与定制建议。</p>
         </div>
-        <!-- 中间节点 -->
         <div class="flex justify-start md:justify-center">
           <div class="step-node">01</div>
         </div>
-        <!-- 右侧文字 (移动端显示，桌面端留白) -->
         <div class="md:hidden pl-4 pt-2">
           <h3 class="text-xl font-bold text-brand-green mb-2">需求沟通</h3>
           <p class="text-sm text-brand-ink/70">明确产品需求、目标市场及合规要求。提供专业的选品与定制建议。</p>
@@ -121,7 +118,6 @@
         <div class="flex justify-start md:justify-center">
           <div class="step-node">02</div>
         </div>
-        <!-- 右侧文字 (桌面端显示) -->
         <div class="pl-4 md:pl-4 pt-2">
           <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">打样与签约</h3>
           <p class="text-sm text-brand-ink/70 leading-relaxed">提供产品样品供客户确认品质与包装设计。双方签署正式的合作协议与保密条款（NDA），保障商业权益。</p>
@@ -132,7 +128,7 @@
       <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
         <div class="hidden md:block text-right pt-2 pr-4">
           <h3 class="text-2xl font-bold text-brand-green mb-3">生产与品控</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验。</p>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验，确保食品安全。</p>
         </div>
         <div class="flex justify-start md:justify-center">
           <div class="step-node">03</div>
@@ -144,7 +140,7 @@
       </div>
 
       <!-- 步骤 4 -->
-      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start pb-12"> 
         <div class="hidden md:block"></div>
         <div class="flex justify-start md:justify-center">
           <div class="step-node">04</div>
@@ -169,23 +165,23 @@
     window.addEventListener('scroll', () => {
       const section = document.querySelector('.timeline-line-bg').parentElement;
       const line = document.getElementById('scrollLine');
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const scrollY = window.scrollY;
+      
+      const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // 计算线条高度
-      let fillHeight = (scrollY + windowHeight / 2 - sectionTop);
+      // 计算线条需要的填充高度
+      let fillHeight = (windowHeight / 2) - rect.top;
+      
       if (fillHeight < 0) fillHeight = 0;
-      if (fillHeight > sectionHeight) fillHeight = sectionHeight;
+      if (fillHeight > rect.height) fillHeight = rect.height;
       
       line.style.height = fillHeight + 'px';
 
       // 卡片浮现与节点发光
       const cards = document.querySelectorAll('.step-card');
       cards.forEach(card => {
-        const cardTop = card.offsetTop;
-        if (scrollY + windowHeight > sectionTop + cardTop + 100) {
+        const cardRect = card.getBoundingClientRect();
+        if (cardRect.top < windowHeight - 100) {
           card.classList.add('show');
         }
       });
