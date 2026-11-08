@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant-HK">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +30,11 @@
   .lang-switch a { color: #666; }
   .lang-switch a.active { color: #B08D57; font-weight: bold; }
   .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .menu-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
     .nav-links.show { display: flex; }
-    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
+    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; width: 100%; }
   }
 
   /* 动效 */
@@ -117,24 +117,24 @@
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6">
       <div class="bg-brand-green rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
-               <!-- 左侧数据 -->
+        <!-- 左侧数据 -->
         <div class="p-10 md:p-16 md:w-3/5 text-brand-cream">
           <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">哈工大聯合研發 · 國際領先</div>
           <h2 class="text-3xl font-bold mb-6">第六代工業 4.0 低溫仿生萃取</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-6">
-            花青素对温度极为敏感，传统 60°C-80°C 的高温浸提极易引发多酚降解。哈工大王振宇教授团队研发的仿生技术，全程将温度严格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模拟植物体内自然生化反应环境。
+            花青素對溫度極為敏感，傳統 60°C-80°C 的高溫浸提極易引發多酚降解。哈工大王振宇教授團隊研發的仿生技術，全程將溫度嚴格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模擬植物體內自然生化反應環境。
           </p>
           
           <div class="grid grid-cols-2 gap-4 mb-8">
             <!-- 传统工艺 -->
             <div class="bg-white/5 p-4 rounded-xl border border-white/10 opacity-70">
-              <div class="text-xs text-brand-cream/50 mb-1">传统高溫熱浸 (藍莓)</div>
+              <div class="text-xs text-brand-cream/50 mb-1">傳統高溫熱浸 (藍莓)</div>
               <div class="text-2xl font-bold mb-1 line-through decoration-rose-500">50元/克</div>
               <div class="text-[11px] text-brand-cream/50">活性留存僅約 60%-75%</div>
             </div>
             <!-- 创新工艺 -->
             <div class="bg-brand-gold/10 p-4 rounded-xl border border-brand-gold shadow-[0_0_15px_rgba(176,141,87,0.2)]">
-              <div class="text-xs text-brand-gold mb-1 font-bold">创新低溫仿生 (紫稻)</div>
+              <div class="text-xs text-brand-gold mb-1 font-bold">創新低溫仿生 (紫稻)</div>
               <div class="text-2xl font-bold text-brand-gold mb-1">9元/克</div>
               <div class="text-[11px] text-brand-gold/80 font-bold">活性高達 97%，領先同業</div>
             </div>
@@ -147,10 +147,11 @@
         </div>
         
         <!-- 右侧图片 -->
-               <!-- 右侧图片 -->
         <div class="md:w-2/5 bg-[#152a20] relative overflow-hidden min-h-[300px]">
            <img src="assets/img/tech.jpg" alt="工業 4.0 萃取技術" class="absolute inset-0 w-full h-full object-cover">
         </div>
+      </div>
+    </div>
   </section>
 
   <!-- 全宽沉浸式基地展示 (已接入 MP4 视频) -->
@@ -160,16 +161,9 @@
         <!-- 左侧实拍视频 -->
         <div class="w-full md:w-1/2 reveal">
           <div class="aspect-[4/3] bg-brand-cream/10 border border-brand-gold/30 rounded-2xl overflow-hidden relative shadow-2xl">
-             <!-- MP4 视频标签 -->
-             <video 
-               autoplay 
-               loop 
-               muted 
-               playsinline 
-               poster="assets/img/hero.webp" 
-               class="w-full h-full object-cover">
+             <video autoplay loop muted playsinline poster="assets/img/hero.webp" class="w-full h-full object-cover">
                <source src="assets/img/factory.mp4" type="video/mp4">
-               您的浏览器不支持视频播放。
+               您的瀏覽器不支持視頻播放。
              </video>
           </div>
         </div>
