@@ -16,137 +16,175 @@
     }
   }
 </script>
-<style> body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; } </style>
+<style>
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
+  
+  /* 导航栏样式（直接复用你修好的） */
+  .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang HK', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
+  .nav-links a { color: #1F3A2E; text-decoration: none; transition: all 0.3s; }
+  .nav-links a:hover { color: #B08D57; }
+  .nav-links a.active { color: #B08D57; border-bottom: 2px solid #B08D57; padding-bottom: 4px; }
+  .lang-switch { display: flex; align-items: center; gap: 12px; border-left: 1px solid #ccc; padding-left: 24px; margin-left: 8px; font-size: 14px; }
+  .lang-switch a { color: #666; }
+  .lang-switch a.active { color: #B08D57; font-weight: bold; }
+  .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
+  @media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links.show { display: flex; }
+    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
+  }
+
+  /* 时间轴动效 */
+  .timeline-line-bg { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: rgba(31, 58, 46, 0.1); transform: translateX(-50%); border-radius: 4px; }
+  .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 50%; transform: translateX(-50%); border-radius: 4px; height: 0%; transition: height 0.3s ease; box-shadow: 0 0 15px #B08D57; }
+  
+  .step-card { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .step-card.show { opacity: 1; transform: translateY(0); }
+  
+  /* 节点光圈 */
+  .step-node { position: relative; z-index: 10; width: 5rem; height: 5rem; border-radius: 50%; background: #1F3A2E; color: #B08D57; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; border: 4px solid #F7F4EC; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.5s ease; }
+  .step-card.show .step-node { box-shadow: 0 0 25px rgba(176, 141, 87, 0.6); border-color: #B08D57; }
+
+  @media (max-width: 768px) {
+    .timeline-line-bg, .timeline-line-fill { left: 2rem; }
+    .step-node { width: 4rem; height: 4rem; font-size: 1.25rem; }
+  }
+</style>
 </head>
 <body class="antialiased">
 
-<style>
-  /* 原生 CSS 导航栏样式 */
-  .custom-nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .nav-container {
-    max-width: 1280px; margin: 0 auto; padding: 15px 24px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .nav-links {
-    display: flex; align-items: center; gap: 32px;
-    font-family: 'PingFang HK', 'Inter', sans-serif;
-    font-size: 16px; font-weight: 600;
-  }
-  .nav-links a {
-    color: #1F3A2E; text-decoration: none; transition: all 0.3s;
-  }
-  .nav-links a:hover {
-    color: #B08D57;
-  }
-  .nav-links a.active {
-    color: #B08D57; border-bottom: 2px solid #B08D57; padding-bottom: 4px;
-  }
-  .lang-switch {
-    display: flex; align-items: center; gap: 12px;
-    border-left: 1px solid #ccc; padding-left: 24px; margin-left: 8px;
-    font-size: 14px;
-  }
-  .lang-switch a { color: #666; }
-  .lang-switch a.active { color: #B08D57; font-weight: bold; }
-  
-  /* 手机端隐藏菜单 (可选) */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-  }
-</style>
-
-<header class="custom-nav">
-  <div class="nav-container">
-    <!-- Logo 区域 -->
-    <a href="index.html">
-      <!-- 如果你有深色 Logo，请替换 src -->
-      <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
-    </a>
-    
-    <!-- 导航与语言切换 -->
-    <div class="nav-links">
-      <a href="index.html">首页</a>
-      <a href="products.html">产品与服务</a>
-      <a href="science.html">科学与溯源</a>
-      <a href="process.html" class="active">服务流程</a>
-      <a href="about.html">关于天鼎</a>
-      <a href="b2b.html">渠道合作</a>
-      <a href="contact.html">联络我们</a>
-      
-      <!-- 语言切换 -->
-      <div class="lang-switch">
-        <a href="index.html" class="active">繁</a>
-        <a href="zh-hans/index.html">简</a>
-        <a href="en/index.html">EN</a>
+  <!-- 导航栏 -->
+  <header class="custom-nav">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
+      </a>
+      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+      <div class="nav-links">
+        <a href="index.html">首頁</a>
+        <a href="products.html">產品與服務</a>
+        <a href="science.html">科學與溯源</a>
+        <a href="process.html" class="active">服務流程</a>
+        <a href="about.html">關於天鼎</a>
+        <a href="b2b.html">渠道合作</a>
+        <a href="contact.html">聯絡我們</a>
+        <div class="lang-switch">
+          <a href="process.html" class="active">繁</a>
+          <a href="zh-hans/process.html">简</a>
+          <a href="en/process.html">EN</a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-  <!-- Hero 区 -->
-  <section class="bg-brand-green text-brand-cream py-20 relative overflow-hidden">
+  <!-- 首屏 -->
+  <section class="bg-brand-green text-brand-cream py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-wide">透明高效 · 全链路服务</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-widest drop-shadow-lg">透明高效 · 全链路服务</h1>
       <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
         从需求对接、合规生产到跨境交付，我们以标准化的流程管理，确保每一次合作都清晰可控、安全落地。
       </p>
     </div>
   </section>
 
-  <!-- 服务流程时间轴 -->
-  <section class="max-w-5xl mx-auto px-6 py-20">
-    <div class="text-center mb-16">
-      <h2 class="text-2xl font-bold text-brand-green mb-3">我们的服务步骤</h2>
-      <p class="text-sm text-brand-ink/60">以专业严谨的态度，把控每一个交付环节</p>
-    </div>
+  <!-- 动态时间轴区 -->
+  <section class="max-w-4xl mx-auto px-6 py-24 relative">
+    
+    <!-- 背景暗线 -->
+    <div class="timeline-line-bg"></div>
+    <!-- 滚动发光金线 -->
+    <div class="timeline-line-fill" id="scrollLine"></div>
 
-    <!-- 流程卡片 (桌面端横向，移动端纵向) -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-      <!-- 背景连接线 (仅桌面端显示) -->
-      <div class="hidden md:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-brand-gold/30 z-0"></div>
-
+    <div class="space-y-24">
+      
       <!-- 步骤 1 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">01</div>
-        <h3 class="font-bold text-brand-green mb-2">需求沟通</h3>
-        <p class="text-xs text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求，提供专业建议。</p>
+      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
+        <!-- 桌面端左侧文字 -->
+        <div class="w-full md:w-1/2 md:text-right order-2 md:order-1 pt-4">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">需求沟通</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求。根据海外市场的受众偏好，提供专业的选品与定制建议。</p>
+        </div>
+        <!-- 节点 -->
+        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">01</div>
+        <!-- 桌面端右侧留白 -->
+        <div class="w-full md:w-1/2 hidden md:block order-3"></div>
       </div>
 
       <!-- 步骤 2 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">02</div>
-        <h3 class="font-bold text-brand-green mb-2">打样与签约</h3>
-        <p class="text-xs text-brand-ink/70 leading-relaxed">提供样品确认品质，双方签署正式合作协议，保障权益。</p>
+      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
+        <div class="w-full md:w-1/2 hidden md:block order-1"></div>
+        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">02</div>
+        <div class="w-full md:w-1/2 md:text-left order-2 md:order-3 pt-4">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">打样与签约</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">提供产品样品供客户确认品质与包装设计。双方签署正式的合作协议与保密条款（NDA），保障商业权益。</p>
+        </div>
       </div>
 
       <!-- 步骤 3 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">03</div>
-        <h3 class="font-bold text-brand-green mb-2">生产与品控</h3>
-        <p class="text-xs text-brand-ink/70 leading-relaxed">在佳木斯基地严格按照标准投产，并进行多轮质量检验。</p>
+      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
+        <div class="w-full md:w-1/2 md:text-right order-2 md:order-1 pt-4">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">生产与品控</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验，确保食品安全。</p>
+        </div>
+        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">03</div>
+        <div class="w-full md:w-1/2 hidden md:block order-3"></div>
       </div>
 
       <!-- 步骤 4 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <div class="w-16 h-16 rounded-full bg-brand-green text-brand-gold border-4 border-brand-cream flex items-center justify-center text-xl font-bold mb-4 shadow-md">04</div>
-        <h3 class="font-bold text-brand-green mb-2">跨境交付</h3>
-        <p class="text-xs text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配，提供端到端跟踪支持。</p>
+      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
+        <div class="w-full md:w-1/2 hidden md:block order-1"></div>
+        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">04</div>
+        <div class="w-full md:w-1/2 md:text-left order-2 md:order-3 pt-4">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">跨境交付</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配。提供全套出口单证，实时跟踪货运状态，确保产品安全、准时送达客户手中。</p>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- 底部声明 -->
+  <!-- 底部 -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
     <div class="max-w-4xl mx-auto px-6 text-center text-sm">
-      © 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED
+      © 2026 香港天鼎国际贸易有限公司
     </div>
   </footer>
+
+  <!-- 滚动监听脚本 -->
+  <script>
+    // 监听滚动，点亮金色光线和卡片
+    window.addEventListener('scroll', () => {
+      const section = document.querySelector('.timeline-line-bg').parentElement;
+      const line = document.getElementById('scrollLine');
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // 计算线条填充高度
+      let fillHeight = (scrollY + windowHeight / 2 - sectionTop);
+      if (fillHeight < 0) fillHeight = 0;
+      if (fillHeight > sectionHeight) fillHeight = sectionHeight;
+      
+      line.style.height = fillHeight + 'px';
+
+      // 卡片出现动画
+      const cards = document.querySelectorAll('.step-card');
+      cards.forEach(card => {
+        const cardTop = card.offsetTop;
+        if (scrollY + windowHeight > sectionTop + cardTop + 100) {
+          card.classList.add('show');
+        }
+      });
+    });
+
+    // 初始触发一次，防止刷新时顶部没显示
+    window.dispatchEvent(new Event('scroll'));
+  </script>
 
 </body>
 </html>
