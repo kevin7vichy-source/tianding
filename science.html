@@ -37,14 +37,11 @@
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
   }
 
-  /* 卡片及动效 */
+  /* 动效 */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
-
   .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.2); }
   .tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.1); border-color: #B08D57; }
-
-  /* 数字滚动特效 */
   .data-num { font-size: 3rem; font-weight: 700; color: #1F3A2E; line-height: 1; }
 </style>
 </head>
@@ -74,7 +71,6 @@
 
   <!-- 首屏：高科技暗调背景 -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-green">
-    <!-- 替换为你的实验室/工厂背景图 -->
     <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
     <div class="relative z-10 text-center px-6">
       <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-widest drop-shadow-lg">科學萃取 · 源頭直供</h1>
@@ -117,28 +113,71 @@
     </div>
   </section>
 
-  <!-- 全宽沉浸式基地展示 (升级版) -->
+  <!-- 核心：哈工大技术优势 (高亮科技区块) -->
+  <section class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="bg-brand-green rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
+        <!-- 左侧数据 -->
+        <div class="p-10 md:p-16 md:w-3/5 text-brand-cream">
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">哈工大聯合研發 · 國際領先</div>
+          <h2 class="text-3xl font-bold mb-6">第六代工業 4.0 低溫仿生萃取</h2>
+          <p class="text-brand-cream/80 leading-relaxed mb-8">
+            依託哈工大王教授團隊的國際領先技術，我們在溫度 &lt;45°C 的環境下進行低溫萃取，最大程度保留了植物活性，相比傳統高溫萃取，極大提高了生物利用度。
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="bg-white/5 p-5 rounded-xl border border-white/10 relative overflow-hidden group">
+              <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <div class="text-brand-gold text-4xl font-bold mb-2">97%</div>
+              <div class="text-xs text-brand-cream/60 leading-tight">花青素高活性保留率<br><span class="text-[10px]">(普通高溫提取極易破壞活性)</span></div>
+            </div>
+            <div class="bg-white/5 p-5 rounded-xl border border-white/10 relative overflow-hidden group">
+              <div class="absolute inset-0 bg-brand-gold/5 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <div class="text-brand-gold text-4xl font-bold mb-2">9元/克</div>
+              <div class="text-xs text-brand-cream/60 leading-tight">創新型紫稻提取成本<br><span class="text-[10px]">(市場藍莓提取成本約需 50元)</span></div>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-sm font-medium">
+            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> 顛覆性成本優勢，為 B 端客戶提供極致利潤空間</li>
+            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> 建立花青素國家標準體系，獲權威機構認可</li>
+          </ul>
+        </div>
+        
+        <!-- 右侧图片（使用你提供的实景/展板图） -->
+        <div class="md:w-2/5 bg-[#152a20] flex items-center justify-center p-8 relative">
+           <!-- 可以替换为你拍的第三张不锈钢管道图 -->
+           <div class="text-center text-brand-gold/40 text-lg font-serif border border-brand-gold/20 rounded-xl p-8 w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
+              <div class="bg-black/50 backdrop-blur-sm p-4 rounded-lg">[ 工業 4.0 萃取車間實景 ]</div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 全宽沉浸式基地展示 (源头基地与产能) -->
   <section class="bg-brand-green text-brand-cream py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center gap-16">
         <!-- 左侧实拍图 -->
         <div class="w-full md:w-1/2 reveal">
-          <!-- 请把图片命名为 factory.jpg 放到 assets/img/ 文件夹下 -->
+          <!-- 如果有工厂实景图，替换 src 里的链接 -->
           <div class="aspect-[4/3] bg-brand-cream/10 border border-brand-gold/30 rounded-2xl overflow-hidden relative shadow-2xl">
-             <img src="assets/img/factory.jpg" alt="佳木斯高科技车间" class="w-full h-full object-cover">
+             <img src="assets/img/factory.jpg" alt="佳木斯高科技车间" class="w-full h-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+             <div style="display:none" class="absolute inset-0 items-center justify-center text-brand-gold/50 text-xl font-serif bg-white/5">[ 佳木斯高科技車間實景圖 ]</div>
           </div>
         </div>
         <!-- 右侧文 -->
         <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.2s;">
-          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源头硬核产能</div>
-          <h2 class="text-3xl font-bold mb-6">万基生物科技大健康产业园</h2>
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源頭硬核產能</div>
+          <h2 class="text-3xl font-bold mb-6">黑龍江建三江 · 50萬畝紫稻基地</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-8">
-            天鼎深度合作的黑龙江佳木斯产业园，总投资达 <strong class="text-brand-gold text-xl">10 亿元</strong>，占地 <strong class="text-brand-gold text-xl">6 万平方米</strong>。基地拥有行业领先的高科技提取与无菌生产线，预计年产值 15 亿元。
+            天鼎深度合作的產業園，依托建三江 1200 萬畝水田，擁有全國最大的 <strong class="text-brand-gold">50 萬畝紫稻種植基地</strong>，年產紫稻 25 萬噸。從源頭把控品質，確保原料的純淨與穩定供應。
           </p>
           <ul class="space-y-4 text-sm font-medium">
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 联合哈工大等高校攻关高纯度提取技术</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 不仅提取花青素，更涵盖大米肽、谷维素等高端原料</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 国家严格审批的食品生产许可，合规出海</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 國家級高新技術企業，精準農業與大健康食品研發</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 建立高標準花青素提取與檢驗檢疫體系</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 國家嚴格審批的食品生產許可，合規出海</li>
           </ul>
         </div>
       </div>
@@ -148,7 +187,7 @@
   <!-- 底部 -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
     <div class="max-w-4xl mx-auto px-6 text-center text-sm">
-      © 2026 香港天鼎国际贸易有限公司
+      © 2026 香港天鼎国际贸易有限公司 | 本頁內容僅作科學原理與源頭產能介紹
     </div>
   </footer>
 
@@ -166,6 +205,5 @@
       observer.observe(el);
     });
   </script>
-
 </body>
 </html>
