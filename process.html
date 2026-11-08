@@ -19,7 +19,7 @@
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
   
-  /* 导航栏样式（直接复用你修好的） */
+  /* 导航栏 */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
   .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang HK', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
@@ -37,21 +37,20 @@
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
   }
 
-  /* 时间轴动效 */
-  .timeline-line-bg { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: rgba(31, 58, 46, 0.1); transform: translateX(-50%); border-radius: 4px; }
-  .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 50%; transform: translateX(-50%); border-radius: 4px; height: 0%; transition: height 0.3s ease; box-shadow: 0 0 15px #B08D57; }
+  /* 时间轴终极排版 */
+  .timeline-line-bg { position: absolute; top: 0; bottom: 0; left: 24px; width: 4px; background: rgba(31, 58, 46, 0.1); border-radius: 4px; z-index: 0; }
+  .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 24px; border-radius: 4px; height: 0%; transition: height 0.1s; box-shadow: 0 0 15px #B08D57; z-index: 1; }
   
-  .step-card { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  @media (min-width: 768px) {
+    .timeline-line-bg { left: 50%; transform: translateX(-50%); }
+    .timeline-line-fill { left: 50%; transform: translateX(-50%); }
+  }
+
+  .step-card { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
   .step-card.show { opacity: 1; transform: translateY(0); }
   
-  /* 节点光圈 */
-  .step-node { position: relative; z-index: 10; width: 5rem; height: 5rem; border-radius: 50%; background: #1F3A2E; color: #B08D57; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; border: 4px solid #F7F4EC; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.5s ease; }
-  .step-card.show .step-node { box-shadow: 0 0 25px rgba(176, 141, 87, 0.6); border-color: #B08D57; }
-
-  @media (max-width: 768px) {
-    .timeline-line-bg, .timeline-line-fill { left: 2rem; }
-    .step-node { width: 4rem; height: 4rem; font-size: 1.25rem; }
-  }
+  .step-node { width: 4rem; height: 4rem; border-radius: 50%; background: #1F3A2E; color: #B08D57; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: bold; border: 4px solid #F7F4EC; z-index: 10; position: relative; transition: all 0.5s ease; }
+  .step-card.show .step-node { box-shadow: 0 0 25px rgba(176, 141, 87, 0.6); border-color: #B08D57; transform: scale(1.1); }
 </style>
 </head>
 <body class="antialiased">
@@ -59,9 +58,7 @@
   <!-- 导航栏 -->
   <header class="custom-nav">
     <div class="nav-container">
-      <a href="index.html">
-        <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
-      </a>
+      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;"></a>
       <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
       <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -82,7 +79,6 @@
 
   <!-- 首屏 -->
   <section class="bg-brand-green text-brand-cream py-24 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-widest drop-shadow-lg">透明高效 · 全链路服务</h1>
       <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
@@ -94,60 +90,74 @@
   <!-- 动态时间轴区 -->
   <section class="max-w-4xl mx-auto px-6 py-24 relative">
     
-    <!-- 背景暗线 -->
+    <!-- 背景与进度线 -->
     <div class="timeline-line-bg"></div>
-    <!-- 滚动发光金线 -->
     <div class="timeline-line-fill" id="scrollLine"></div>
 
-    <div class="space-y-24">
+    <!-- 步骤列表 -->
+    <div class="space-y-20 md:space-y-32">
       
       <!-- 步骤 1 -->
-      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
-        <!-- 桌面端左侧文字 -->
-        <div class="w-full md:w-1/2 md:text-right order-2 md:order-1 pt-4">
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
+        <!-- 左侧文字 (仅桌面端显示，且靠右对齐) -->
+        <div class="hidden md:block text-right pt-2 pr-4">
           <h3 class="text-2xl font-bold text-brand-green mb-3">需求沟通</h3>
           <p class="text-sm text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求。根据海外市场的受众偏好，提供专业的选品与定制建议。</p>
         </div>
-        <!-- 节点 -->
-        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">01</div>
-        <!-- 桌面端右侧留白 -->
-        <div class="w-full md:w-1/2 hidden md:block order-3"></div>
+        <!-- 中间节点 -->
+        <div class="flex justify-start md:justify-center">
+          <div class="step-node">01</div>
+        </div>
+        <!-- 右侧文字 (移动端显示，桌面端留白) -->
+        <div class="md:hidden pl-4 pt-2">
+          <h3 class="text-xl font-bold text-brand-green mb-2">需求沟通</h3>
+          <p class="text-sm text-brand-ink/70">明确产品需求、目标市场及合规要求。提供专业的选品与定制建议。</p>
+        </div>
       </div>
 
       <!-- 步骤 2 -->
-      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
-        <div class="w-full md:w-1/2 hidden md:block order-1"></div>
-        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">02</div>
-        <div class="w-full md:w-1/2 md:text-left order-2 md:order-3 pt-4">
-          <h3 class="text-2xl font-bold text-brand-green mb-3">打样与签约</h3>
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-start md:justify-center">
+          <div class="step-node">02</div>
+        </div>
+        <!-- 右侧文字 (桌面端显示) -->
+        <div class="pl-4 md:pl-4 pt-2">
+          <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">打样与签约</h3>
           <p class="text-sm text-brand-ink/70 leading-relaxed">提供产品样品供客户确认品质与包装设计。双方签署正式的合作协议与保密条款（NDA），保障商业权益。</p>
         </div>
       </div>
 
       <!-- 步骤 3 -->
-      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
-        <div class="w-full md:w-1/2 md:text-right order-2 md:order-1 pt-4">
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
+        <div class="hidden md:block text-right pt-2 pr-4">
           <h3 class="text-2xl font-bold text-brand-green mb-3">生产与品控</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验，确保食品安全。</p>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验。</p>
         </div>
-        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">03</div>
-        <div class="w-full md:w-1/2 hidden md:block order-3"></div>
+        <div class="flex justify-start md:justify-center">
+          <div class="step-node">03</div>
+        </div>
+        <div class="md:hidden pl-4 pt-2">
+          <h3 class="text-xl font-bold text-brand-green mb-2">生产与品控</h3>
+          <p class="text-sm text-brand-ink/70">在黑龙江佳木斯的高科技基地严格按照国家标准投产，全程多轮质量检验。</p>
+        </div>
       </div>
 
       <!-- 步骤 4 -->
-      <div class="step-card flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 relative">
-        <div class="w-full md:w-1/2 hidden md:block order-1"></div>
-        <div class="order-1 md:order-2 step-node shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2">04</div>
-        <div class="w-full md:w-1/2 md:text-left order-2 md:order-3 pt-4">
-          <h3 class="text-2xl font-bold text-brand-green mb-3">跨境交付</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配。提供全套出口单证，实时跟踪货运状态，确保产品安全、准时送达客户手中。</p>
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
+        <div class="hidden md:block"></div>
+        <div class="flex justify-start md:justify-center">
+          <div class="step-node">04</div>
+        </div>
+        <div class="pl-4 md:pl-4 pt-2">
+          <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">跨境交付</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配。提供全套出口单证，实时跟踪货运状态，确保产品安全、准时送达。</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 底部 -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
     <div class="max-w-4xl mx-auto px-6 text-center text-sm">
       © 2026 香港天鼎国际贸易有限公司
@@ -156,7 +166,6 @@
 
   <!-- 滚动监听脚本 -->
   <script>
-    // 监听滚动，点亮金色光线和卡片
     window.addEventListener('scroll', () => {
       const section = document.querySelector('.timeline-line-bg').parentElement;
       const line = document.getElementById('scrollLine');
@@ -165,14 +174,14 @@
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
 
-      // 计算线条填充高度
+      // 计算线条高度
       let fillHeight = (scrollY + windowHeight / 2 - sectionTop);
       if (fillHeight < 0) fillHeight = 0;
       if (fillHeight > sectionHeight) fillHeight = sectionHeight;
       
       line.style.height = fillHeight + 'px';
 
-      // 卡片出现动画
+      // 卡片浮现与节点发光
       const cards = document.querySelectorAll('.step-card');
       cards.forEach(card => {
         const cardTop = card.offsetTop;
@@ -182,9 +191,8 @@
       });
     });
 
-    // 初始触发一次，防止刷新时顶部没显示
+    // 刷新时触发一次
     window.dispatchEvent(new Event('scroll'));
   </script>
-
 </body>
 </html>
