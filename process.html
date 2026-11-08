@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant-HK">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>服务流程 - 香港天鼎国际贸易</title>
+<title>服務流程 - 香港天鼎國際貿易</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
@@ -30,15 +30,15 @@
   .lang-switch a { color: #666; }
   .lang-switch a.active { color: #B08D57; font-weight: bold; }
   .menu-toggle { display: none; cursor: pointer; font-size: 28px; color: #1F3A2E; background: none; border: none; }
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .menu-toggle { display: block; }
-    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); flex-direction: column; padding: 20px; gap: 16px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); border-bottom: 1px solid #ddd; }
     .nav-links.show { display: flex; }
-    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
+    .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; width: 100%; }
   }
 
   /* 时间轴排版 */
-  .timeline-wrapper { position: relative; padding-bottom: 120px; } /* 底部留白，保证线能画完 */
+  .timeline-wrapper { position: relative; padding-bottom: 120px; }
   .timeline-line-bg { position: absolute; top: 0; bottom: 0; left: 24px; width: 4px; background: rgba(31, 58, 46, 0.1); border-radius: 4px; z-index: 0; }
   .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 24px; border-radius: 4px; height: 0%; box-shadow: 0 0 15px #B08D57; z-index: 1; }
   
@@ -61,7 +61,7 @@
   <!-- 导航栏 -->
   <header class="custom-nav">
     <div class="nav-container">
-      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;"></a>
+      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎國際" style="height: 40px;"></a>
       <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
       <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -83,9 +83,9 @@
   <!-- 首屏 -->
   <section class="bg-brand-green text-brand-cream py-24 relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-widest drop-shadow-lg">透明高效 · 全链路服务</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-widest drop-shadow-lg">透明高效 · 全鏈路服務</h1>
       <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
-        从需求对接、合规生产到跨境交付，我们以标准化的流程管理，确保每一次合作都清晰可控、安全落地。
+        從需求對接、合規生產到跨境交付，我們以標準化的流程管理，確保每一次合作都清晰可控、安全落地。
       </p>
     </div>
   </section>
@@ -103,15 +103,15 @@
       <!-- 步骤 1 -->
       <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
         <div class="hidden md:block text-right pt-2 pr-4">
-          <h3 class="text-2xl font-bold text-brand-green mb-3">需求沟通</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">明确产品需求、目标市场及合规要求。根据海外市场的受众偏好，提供专业的选品与定制建议。</p>
+          <h3 class="text-2xl font-bold text-brand-green mb-3">需求溝通</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">明確產品需求、目標市場及合規要求。根據海外市場的受眾偏好，提供專業的選品與定製建議。</p>
         </div>
         <div class="flex justify-start md:justify-center">
           <div class="step-node">01</div>
         </div>
         <div class="md:hidden pl-4 pt-2">
-          <h3 class="text-xl font-bold text-brand-green mb-2">需求沟通</h3>
-          <p class="text-sm text-brand-ink/70">明确产品需求、目标市场及合规要求。提供专业的选品与定制建议。</p>
+          <h3 class="text-xl font-bold text-brand-green mb-2">需求溝通</h3>
+          <p class="text-sm text-brand-ink/70">明確產品需求、目標市場及合規要求。提供專業的選品與定製建議。</p>
         </div>
       </div>
 
@@ -122,23 +122,23 @@
           <div class="step-node">02</div>
         </div>
         <div class="pl-4 md:pl-4 pt-2">
-          <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">打样与签约</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">提供产品样品供客户确认品质与包装设计。双方签署正式的合作协议与保密条款（NDA），保障商业权益。</p>
+          <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">打樣與簽約</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">提供產品樣品供客戶確認品質與包裝設計。雙方簽署正式的合作協議與保密條款（NDA），保障商業權益。</p>
         </div>
       </div>
 
       <!-- 步骤 3 -->
       <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
         <div class="hidden md:block text-right pt-2 pr-4">
-          <h3 class="text-2xl font-bold text-brand-green mb-3">生产与品控</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龙江佳木斯的高科技基地严格按照国家标准投产。海归研发团队全程监控，进行多轮质量检验，确保食品安全。</p>
+          <h3 class="text-2xl font-bold text-brand-green mb-3">生產與品控</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">在黑龍江佳木斯的高科技基地嚴格按照國家標準投產。海歸研發團隊全程監控，進行多輪質量檢驗，確保食品安全。</p>
         </div>
         <div class="flex justify-start md:justify-center">
           <div class="step-node">03</div>
         </div>
         <div class="md:hidden pl-4 pt-2">
-          <h3 class="text-xl font-bold text-brand-green mb-2">生产与品控</h3>
-          <p class="text-sm text-brand-ink/70">在黑龙江佳木斯的高科技基地严格按照国家标准投产，全程多轮质量检验。</p>
+          <h3 class="text-xl font-bold text-brand-green mb-2">生產與品控</h3>
+          <p class="text-sm text-brand-ink/70">在黑龍江佳木斯的高科技基地嚴格按照國家標準投產，全程多輪質量檢驗。</p>
         </div>
       </div>
 
@@ -150,16 +150,17 @@
         </div>
         <div class="pl-4 md:pl-4 pt-2">
           <h3 class="text-xl md:text-2xl font-bold text-brand-green mb-2 md:mb-3">跨境交付</h3>
-          <p class="text-sm text-brand-ink/70 leading-relaxed">安排国际物流、清关及海外仓配。提供全套出口单证，实时跟踪货运状态，确保产品安全、准时送达。</p>
+          <p class="text-sm text-brand-ink/70 leading-relaxed">安排國際物流、清關及海外倉配。提供全套出口單證，實時跟蹤貨運狀態，確保產品安全、準時送達。</p>
         </div>
       </div>
 
     </div>
   </section>
 
+  <!-- 底部 -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
     <div class="max-w-4xl mx-auto px-6 text-center text-sm">
-      © 2026 香港天鼎国际贸易有限公司
+      © 2026 香港天鼎國際貿易有限公司
     </div>
   </footer>
 
