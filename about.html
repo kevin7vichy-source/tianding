@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>关于天鼎 - 香港天鼎国际贸易</title>
+<title>關於天鼎 - 香港天鼎國際貿易</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
-  tailwind.config = { theme: { extend: { colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } }, fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] } } } }
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
+      }
+    }
+  }
 </script>
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
+  
+  /* 导航栏 */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
   .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang HK', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
@@ -27,6 +36,8 @@
     .nav-links.show { display: flex; }
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
   }
+
+  /* 动效 */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
   .img-hover-zoom { overflow: hidden; border-radius: 12px; }
@@ -36,9 +47,10 @@
 </head>
 <body class="antialiased">
 
+  <!-- 导航栏 -->
   <header class="custom-nav">
     <div class="nav-container">
-      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;"></a>
+      <a href="index.html"><img src="assets/logo-horizontal.svg" alt="天鼎國際" style="height: 40px;"></a>
       <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
       <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -57,61 +69,99 @@
     </div>
   </header>
 
+  <!-- 首屏：视差背景 -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-green">
-    <!-- 背景图采用维港或高端办公室 -->
     <div class="absolute inset-0 opacity-30 bg-[url('assets/img/office.jpg')] bg-cover bg-center bg-fixed"></div>
     <div class="relative z-10 text-center px-6 reveal active">
-      <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-wider drop-shadow-lg">科技赋能 · 品质溯源</h1>
-      <p class="text-lg text-brand-cream/90 max-w-2xl mx-auto">立足香港，背靠内地高科技生产基地。致力于将天然、安全的大健康产品推向全球。</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-wider drop-shadow-lg">科技賦能 · 品質溯源</h1>
+      <p class="text-lg text-brand-cream/90 max-w-2xl mx-auto">立足香港，背靠內地高科技生產基地。致力於將天然、安全的大健康產品推向全球。</p>
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-24">
-    <div class="flex flex-col md:flex-row items-center gap-16">
-      <div class="w-full md:w-1/2 reveal">
-        <div class="img-hover-zoom aspect-[4/5] bg-gray-200 border border-brand-gold/20 shadow-2xl relative">
-                 <div class="img-hover-zoom aspect-[4/5] bg-gray-200 border border-brand-gold/20 shadow-2xl relative">
-          <!-- 接入真实的创始人照片 -->
+  <!-- 创始人模块：左图右文（已修复排版） -->
+  <section class="max-w-6xl mx-auto px-6 py-24 overflow-hidden">
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+      <!-- 左侧照片：强制固定比例 -->
+      <div class="w-full md:w-5/12 shrink-0 reveal">
+        <div class="img-hover-zoom aspect-[4/5] bg-gray-200 border border-brand-gold/20 shadow-2xl relative w-full">
+          <!-- 直接读取你上传的创始人照片 -->
           <img src="assets/img/founder.jpg" alt="海歸創始人" class="absolute inset-0 w-full h-full object-cover">
         </div>
-      <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.2s;">
+      </div>
+      
+      <!-- 右侧文字：自适应剩余空间 -->
+      <div class="w-full md:w-7/12 reveal" style="transition-delay: 0.2s;">
         <h2 class="text-3xl font-bold text-brand-green mb-6 leading-snug">海歸創始人<br>國際化研發理念</h2>
-        <p class="text-brand-gold font-bold text-xl italic mb-6 border-l-4 border-brand-gold pl-4">"将西方严谨的研发体系与东方传统的植物萃取智慧相结合。"</p>
-        <p class="text-brand-ink/70 leading-relaxed mb-6">天鼎國際創始人畢業於美國知名學府。帶著國際前沿的健康理念與科研視野回國，致力於為全球消費者提供真正有科學依據的大健康產品。</p>
+        <p class="text-brand-gold font-bold text-lg md:text-xl italic mb-6 border-l-4 border-brand-gold pl-4 leading-relaxed">
+          "將西方嚴謹的研發體系與東方傳統的植物萃取智慧相結合。"
+        </p>
+        <p class="text-brand-ink/70 leading-relaxed mb-6 text-sm md:text-base">
+          天鼎國際創始人畢業於美國知名學府。帶著國際前沿的健康理念與科研視野回國，致力於為全球消費者提供真正有科學依據的大健康產品。
+        </p>
+        <ul class="space-y-3 text-sm font-medium text-brand-green mt-8">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span> 國際化視野與前沿科研理念</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-gold rounded-full"></span> 對標國際標準的品控體系</li>
+        </ul>
       </div>
     </div>
   </section>
 
+  <!-- 生产基地模块：深色背景 + 毛玻璃卡片 -->
   <section class="bg-brand-green text-brand-cream py-24 relative overflow-hidden">
-         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- 装饰背景 -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-gold/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl font-bold mb-4">黑龍江建三江 · 大健康產業園</h2>
+        <p class="text-brand-cream/70">依託國企背景與高科技設備，打造合規源頭產能</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- 卡片 1 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal">
           <div class="text-brand-gold text-4xl mb-4">🌾</div>
-          <h3 class="text-xl font-bold mb-3">50万亩源头基地</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">依托建三江 1200 万亩水田，拥有全国最大的 50 万亩紫稻种植基地，年产紫稻 25 万吨，从源头把控品质。</p>
+          <h3 class="text-xl font-bold mb-3">50萬畝源頭基地</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">依託建三江 1200 萬畝水田，擁有全國最大的 50 萬畝紫稻種植基地，年產紫稻 25 萬噸，從源頭把控品質。</p>
         </div>
         <!-- 卡片 2 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal" style="transition-delay: 0.1s;">
           <div class="text-brand-gold text-4xl mb-4">🔬</div>
-          <h3 class="text-xl font-bold mb-3">国家级高新企业</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">合作方黑龙江华弘成生物科技，联合哈工大等高校，建立花青素国家标准体系，获中国检验检疫研究院等权威机构认可。</p>
+          <h3 class="text-xl font-bold mb-3">國家級高新企業</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">合作方黑龍江華弘成生物科技，聯合哈工大等高校，建立花青素國家標準體系，獲中國檢驗檢疫研究院等權威機構認可。</p>
         </div>
         <!-- 卡片 3 -->
         <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-8 reveal" style="transition-delay: 0.2s;">
           <div class="text-brand-gold text-4xl mb-4">🤝</div>
-          <h3 class="text-xl font-bold mb-3">全球生态合作圈</h3>
-          <p class="text-sm text-brand-cream/70 leading-relaxed">已与韩国农业联盟、西安百川、济南润安等国内外知名企业展开深度合作，并与黑龙江机场集团达成推广销售意向。</p>
+          <h3 class="text-xl font-bold mb-3">全球生態合作圈</h3>
+          <p class="text-sm text-brand-cream/70 leading-relaxed">已與韓國農業聯盟、西安百川、濟南潤安等國內外知名企業展開深度合作，並與黑龍江機場集團達成推廣銷售意向。</p>
         </div>
       </div>
+    </div>
   </section>
 
+  <!-- 底部 -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
-    <div class="max-w-4xl mx-auto px-6 text-center text-sm">© 2026 香港天鼎国际贸易有限公司</div>
+    <div class="max-w-4xl mx-auto px-6 text-center text-sm">
+      © 2026 香港天鼎國際貿易有限公司
+    </div>
   </footer>
 
+  <!-- 滚动动画脚本 -->
   <script>
-    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
   </script>
+
 </body>
 </html>
