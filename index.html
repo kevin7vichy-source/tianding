@@ -47,7 +47,6 @@ img{display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25, 1,
 .lang-switch a:hover {color:#B08D57}
 .lang-switch a.active {color:#B08D57;font-weight:bold;border:none}
 
-/* 手机端汉堡按钮 */
 .menu-toggle{display:none;background:none;border:none;color:#1F3A2E;cursor:pointer;padding:5px}
 .menu-toggle svg{width:32px;height:32px}
 
@@ -131,12 +130,15 @@ button{justify-self:start;font-family:var(--font-sans);font-weight:600;font-size
 button:hover{background:var(--au-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(176,141,87,0.25)}
 .note{font-size:13px;color:#9E978A;margin-top:4px}
 
-/* ================= 底部 ================= */
-footer{background:#111f19;color:#8A8275;font-size:13px;padding:32px 0;border-top:1px solid rgba(255,255,255,0.05)}
-footer .w{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+/* ================= 5. 底部 (绝对居中版) ================= */
+footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top:1px solid rgba(255,255,255,0.05)}
+footer .footer-container{max-width:800px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
 footer img{height:28px;filter:brightness(0) invert(0.7)}
+footer .footer-text{line-height:1.8;font-size:12px}
+footer a{color:#B08D57;transition:color 0.3s}
+footer a:hover{color:#fff}
 
-/* ================= 响应式 (微调) ================= */
+/* ================= 6. 响应式 (微调) ================= */
 @media(max-width:860px){
   .hero{height:auto;padding:150px 0 90px}
   .hero h1{font-size:34px}
@@ -268,17 +270,16 @@ footer img{height:28px;filter:brightness(0) invert(0.7)}
   </div>
 </section>
 
-<!-- 底部 -->
-  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20 mt-auto">
-    <!-- 核心改动：将宽度从 7xl 缩小到 4xl，让文字和 logo 整体居中 -->
-    <div class="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center text-center gap-4 text-sm">
-      <img src="assets/logo-horizontal-white.svg" alt="天鼎 TIANDING" class="h-10">
-      <div class="text-xs leading-relaxed">
-        <p class="mb-2">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-        <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" class="text-brand-gold hover:text-white transition">tiandingtr@gmail.com</a></p>
-      </div>
+<!-- 底部 (绝对居中版) -->
+<footer>
+  <div class="footer-container">
+    <img src="assets/logo-horizontal-white.svg" alt="天鼎 TIANDING">
+    <div class="footer-text">
+      <p style="margin-bottom: 6px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
+      <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com">tiandingtr@gmail.com</a></p>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script>
 // 1. 导航栏滚动监听
