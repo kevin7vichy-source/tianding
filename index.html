@@ -259,17 +259,16 @@ footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top
 </section>
 
 <!-- 全新纯净版底部 -->
-<footer>
-  <div class="footer-inner">
-    <!-- 直接读取真实的白底 Logo -->
-    <img src="assets/logo-horizontal-white.svg" alt="天鼎國際">
-    <div class="footer-text">
-      <p style="margin-bottom:6px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-      <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color:#B08D57;text-decoration:none;">tiandingtr@gmail.com</a></p>
-    </div>
+<footer style="background-color: #111f19; padding: 40px 20px; border-top: 1px solid rgba(176,141,87,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+  
+  <!-- 核心秘诀：使用原本的彩色 Logo，通过 CSS 滤镜（brightness: 0 invert: 1）强制变成纯白 -->
+  <img src="assets/logo-horizontal.svg" alt="天鼎國際" style="height: 36px; width: auto; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.9;">
+
+  <div style="color: rgba(247, 244, 236, 0.6); font-size: 12px; line-height: 1.8; max-width: 800px;">
+    <p style="margin-bottom: 6px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
+    <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color: #B08D57; text-decoration: none;">tiandingtr@gmail.com</a></p>
   </div>
 </footer>
-
 <script>
 const navHeader = document.querySelector('.custom-nav');
 window.addEventListener('scroll', () => {
