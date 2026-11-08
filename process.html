@@ -19,7 +19,7 @@
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
   
-  /* 导航栏样式 */
+  /* 导航栏 */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
   .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang HK', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
@@ -37,20 +37,23 @@
     .lang-switch { border-left: none; padding-left: 0; margin-left: 0; border-top: 1px solid #eee; padding-top: 16px; justify-content: flex-start; }
   }
 
-  /* 时间轴终极排版 */
+  /* 时间轴排版 */
+  .timeline-wrapper { position: relative; padding-bottom: 120px; } /* 底部留白，保证线能画完 */
   .timeline-line-bg { position: absolute; top: 0; bottom: 0; left: 24px; width: 4px; background: rgba(31, 58, 46, 0.1); border-radius: 4px; z-index: 0; }
-  .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 24px; border-radius: 4px; height: 0%; transition: height 0.1s; box-shadow: 0 0 15px #B08D57; z-index: 1; }
+  .timeline-line-fill { position: absolute; top: 0; width: 4px; background: #B08D57; left: 24px; border-radius: 4px; height: 0%; box-shadow: 0 0 15px #B08D57; z-index: 1; }
   
   @media (min-width: 768px) {
     .timeline-line-bg { left: 50%; transform: translateX(-50%); }
     .timeline-line-fill { left: 50%; transform: translateX(-50%); }
   }
 
-  .step-card { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+  /* 步骤卡片动效 */
+  .step-card { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
   .step-card.show { opacity: 1; transform: translateY(0); }
   
+  /* 节点圆圈 */
   .step-node { width: 4rem; height: 4rem; border-radius: 50%; background: #1F3A2E; color: #B08D57; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: bold; border: 4px solid #F7F4EC; z-index: 10; position: relative; transition: all 0.5s ease; }
-  .step-card.show .step-node { box-shadow: 0 0 25px rgba(176, 141, 87, 0.6); border-color: #B08D57; transform: scale(1.1); }
+  .step-card.show .step-node { box-shadow: 0 0 25px rgba(176, 141, 87, 0.8); border-color: #B08D57; transform: scale(1.1); }
 </style>
 </head>
 <body class="antialiased">
@@ -88,14 +91,14 @@
   </section>
 
   <!-- 动态时间轴区 -->
-  <section class="max-w-4xl mx-auto px-6 pt-24 pb-32 relative"> 
+  <section class="max-w-4xl mx-auto px-6 pt-24 timeline-wrapper"> 
     
     <!-- 背景与进度线 -->
     <div class="timeline-line-bg"></div>
     <div class="timeline-line-fill" id="scrollLine"></div>
 
     <!-- 步骤列表 -->
-    <div class="space-y-20 md:space-y-32">
+    <div class="space-y-20 md:space-y-32 relative z-10">
       
       <!-- 步骤 1 -->
       <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
@@ -140,7 +143,7 @@
       </div>
 
       <!-- 步骤 4 -->
-      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start pb-12"> 
+      <div class="step-card grid grid-cols-[48px_1fr] md:grid-cols-3 md:gap-8 items-start">
         <div class="hidden md:block"></div>
         <div class="flex justify-start md:justify-center">
           <div class="step-node">04</div>
@@ -160,20 +163,25 @@
     </div>
   </footer>
 
-  <!-- 滚动监听脚本 -->
+  <!-- 绝对精准的滚动监听脚本 -->
   <script>
     window.addEventListener('scroll', () => {
-      const section = document.querySelector('.timeline-line-bg').parentElement;
+      const wrapper = document.querySelector('.timeline-wrapper');
       const line = document.getElementById('scrollLine');
       
-      const rect = section.getBoundingClientRect();
+      // 获取时间轴容器的高度和距离顶部的距离
+      const rect = wrapper.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-
-      // 计算线条需要的填充高度
+      
+      // 核心算法：当容器的顶部到达屏幕的中间时，线开始画
+      // 当容器的底部到达屏幕的中间时，线刚好画完
       let fillHeight = (windowHeight / 2) - rect.top;
       
-      if (fillHeight < 0) fillHeight = 0;
-      if (fillHeight > rect.height) fillHeight = rect.height;
+      if (fillHeight < 0) {
+        fillHeight = 0;
+      } else if (fillHeight > rect.height) {
+        fillHeight = rect.height; // 绝对不超过容器高度
+      }
       
       line.style.height = fillHeight + 'px';
 
@@ -181,13 +189,14 @@
       const cards = document.querySelectorAll('.step-card');
       cards.forEach(card => {
         const cardRect = card.getBoundingClientRect();
+        // 当卡片顶部到达屏幕下方 100px 时触发动画
         if (cardRect.top < windowHeight - 100) {
           card.classList.add('show');
         }
       });
     });
 
-    // 刷新时触发一次
+    // 初始触发一次
     window.dispatchEvent(new Event('scroll'));
   </script>
 </body>
