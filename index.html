@@ -10,15 +10,8 @@
 <style>
 /* ================= 核心变量与字体 ================= */
 :root{
-  --g:#1F3A2E; /* 主绿 */
-  --g-dark:#162a21;
-  --g2:#2D5141;
-  --au:#B08D57; /* 香槟金 */
-  --au-light:#D9C29A;
-  --iv:#F7F4EC; /* 米白背景 */
-  --ink:#23201B;
-  --mu:#6E685D;
-  --ln:#DDD5C4;
+  --g:#1F3A2E; --g-dark:#162a21; --g2:#2D5141; --au:#B08D57; --au-light:#D9C29A;
+  --iv:#F7F4EC; --ink:#23201B; --mu:#6E685D; --ln:#DDD5C4;
   --font-serif:"Noto Serif CJK TC","Songti TC","PMingLiU",serif;
   --font-sans:"PingFang HK","Inter","Noto Sans CJK TC",sans-serif;
 }
@@ -46,18 +39,11 @@ img{display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25, 1,
 .lang-switch a {color:#666;border:none}
 .lang-switch a:hover {color:#B08D57}
 .lang-switch a.active {color:#B08D57;font-weight:bold;border:none}
-
 .menu-toggle{display:none;background:none;border:none;color:#1F3A2E;cursor:pointer;padding:5px}
 .menu-toggle svg{width:32px;height:32px}
-
 @media (max-width: 900px) {
   .menu-toggle {display:block}
-  .nav-links {
-    display:none;position:absolute;top:100%;left:0;right:0;
-    background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);
-    flex-direction:column;padding:20px 24px;gap:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.1);border-bottom:2px solid #B08D57;
-  }
+  .nav-links {display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);flex-direction:column;padding:20px 24px;gap:20px;box-shadow:0 10px 20px rgba(0,0,0,0.1);border-bottom:2px solid #B08D57;}
   .nav-links.show {display:flex}
   .lang-switch {border-left:none;padding-left:0;margin-left:0;border-top:1px solid #eee;padding-top:16px;width:100%;justify-content:flex-start}
 }
@@ -73,7 +59,6 @@ img{display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25, 1,
 .hero h1{font-size:52px;line-height:1.25;margin:20px 0 24px;max-width:680px;text-shadow:0 4px 20px rgba(0,0,0,0.3)}
 .hero p{max-width:600px;color:#E6E0D2;font-size:17px;line-height:1.85;opacity:0.92}
 .rule{width:60px;height:3px;background:var(--au);margin:32px 0;border-radius:2px}
-
 .cta{display:inline-flex;align-items:center;gap:10px;background:rgba(176,141,87,0.12);border:1px solid var(--au);color:var(--au-light);padding:14px 36px;font-size:15px;letter-spacing:.15em;position:relative;overflow:hidden;cursor:pointer;transition:all 0.4s ease;border-radius:2px}
 .cta::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent);transition:left 0.6s ease}
 .cta:hover{background:var(--au);color:var(--g-dark);box-shadow:0 8px 24px rgba(176,141,87,0.3);transform:translateY(-2px);font-weight:600}
@@ -84,19 +69,16 @@ section{padding:110px 0}
 .sh{display:flex;align-items:baseline;gap:20px;margin-bottom:50px;border-bottom:1px solid var(--ln);padding-bottom:20px}
 .sh h2{font-size:32px;color:var(--g)}
 .sh span{font-size:13px;letter-spacing:.35em;color:var(--au);font-weight:600;font-family:var(--font-sans)}
-
 .biz{display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
 .biz article{grid-column:span 2;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.03);transition:all 0.4s ease;position:relative;border-top:3px solid transparent;display:flex;flex-direction:column}
 .biz article:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(31,58,46,0.08);border-top-color:var(--au)}
 .biz article:nth-child(4),.biz article:nth-child(5){grid-column:span 3}
-
 .img-wrap{overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--g2)}
 .biz article:nth-child(4) .img-wrap,.biz article:nth-child(5) .img-wrap{aspect-ratio:16/9}
 .img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(22,42,33,0.45) 0%, transparent 45%);opacity:0;transition:opacity 0.4s}
 .biz article:hover .img-wrap::after{opacity:1}
 .biz article:hover img{transform:scale(1.08)}
 .biz img{width:100%;height:100%;object-fit:cover}
-
 .biz .tx{padding:28px 26px;flex:1}
 .no{font-family:var(--font-sans);color:var(--au);font-size:13px;letter-spacing:.2em;font-weight:700}
 .biz h3{font-size:20px;color:var(--g);margin:8px 0 12px;line-height:1.45}
@@ -115,7 +97,6 @@ section{padding:110px 0}
 .info dd{font-size:16px;margin-top:6px;line-height:1.7;color:#E6E0D2}
 .info a{border-bottom:1px solid rgba(217,194,154,.4);padding-bottom:2px}
 .info a:hover{color:var(--au-light);border-color:var(--au-light)}
-
 form{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 label{font-size:13px;letter-spacing:.1em;color:var(--au-light);display:flex;flex-direction:column;gap:8px;min-width:0}
 .full{grid-column:1/-1}
@@ -124,18 +105,11 @@ input::placeholder,textarea::placeholder{color:rgba(230,224,210,0.4)}
 input:focus,select:focus,textarea:focus{border-color:var(--au);background:rgba(255,255,255,0.06);box-shadow:0 0 15px rgba(176,141,87,0.18)}
 select option{color:var(--ink);background:#fff}
 textarea{min-height:120px;resize:vertical}
-
 button{justify-self:start;font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:.15em;background:var(--au);color:var(--g-dark);border:0;padding:14px 40px;cursor:pointer;border-radius:4px;transition:all 0.3s ease;display:flex;align-items:center;gap:8px}
 button:hover{background:var(--au-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(176,141,87,0.25)}
 .note{font-size:13px;color:#9E978A;margin-top:4px}
 
-/* ================= 5. 底部 (绝对居中修正版) ================= */
-footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top:1px solid rgba(255,255,255,0.05)}
-.footer-inner{max-width:800px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
-.footer-inner img{height:32px;width:auto;filter:brightness(0) invert(0.7);opacity:0.9}
-.footer-text{line-height:1.8;font-size:12px}
-
-/* ================= 6. 响应式 ================= */
+/* ================= 5. 响应式 ================= */
 @media(max-width:860px){
   .hero{height:auto;padding:150px 0 90px}
   .hero h1{font-size:34px}
@@ -152,31 +126,10 @@ footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top
 </head>
 <body>
 
-<header class="custom-nav">
-  <div class="nav-container">
-    <a href="index.html" class="flex items-center">
-      <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
-    </a>
-    <button class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('show')">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    </button>
-    <div class="nav-links" id="nav-menu">
-      <a href="index.html" class="active">首頁</a>
-      <a href="products.html">產品與服務</a>
-      <a href="science.html">科學與溯源</a>
-      <a href="process.html">服務流程</a>
-      <a href="about.html">關於天鼎</a>
-      <a href="b2b.html">渠道合作</a>
-      <a href="contact.html">聯絡我們</a>
-      <div class="lang-switch">
-        <a href="index.html" class="active">繁</a>
-        <a href="zh-hans/index.html">简</a>
-        <a href="en/index.html">EN</a>
-      </div>
-    </div>
-  </div>
-</header>
+<!-- 自动化占位符：全局导航 -->
+<div id="global-header"></div>
 
+<!-- 首屏区 -->
 <div class="hero" id="top">
   <img src="assets/img/hero.webp" class="hero-bg" alt="面向維多利亞港的會議室" width="1600" height="900">
   <div class="in">
@@ -192,6 +145,7 @@ footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top
   </div>
 </div>
 
+<!-- 业务范畴 -->
 <section id="business">
   <div class="w">
     <div class="sh reveal">
@@ -222,6 +176,7 @@ footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top
   </div>
 </section>
 
+<!-- 联系我们 -->
 <section class="ct" id="contact">
   <div class="w">
     <div class="sh reveal">
@@ -258,34 +213,14 @@ footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top
   </div>
 </section>
 
-<!-- 终极纯代码绘制的底部 -->
-<footer style="background-color: #111f19; padding: 40px 20px; border-top: 1px solid rgba(176,141,87,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-  
-  <!-- 用代码画出来的 Logo：金色方块 + 鼎字 + 英文，绝对不裂图 -->
-  <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px;">
-    <div style="width: 42px; height: 42px; background-color: #B08D57; color: #1F3A2E; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-family: serif; font-size: 24px; font-weight: bold;">鼎</div>
-    <div style="text-align: left;">
-      <div style="color: #F7F4EC; font-size: 22px; font-weight: bold; letter-spacing: 2px; line-height: 1.2;">天鼎國際</div>
-      <div style="color: #B08D57; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;">TIANDING</div>
-    </div>
-  </div>
+<!-- 自动化占位符：全局底部 -->
+<div id="global-footer"></div>
 
-  <!-- 绝对居中的地址和版权 -->
-  <div style="color: rgba(247, 244, 236, 0.6); font-size: 12px; line-height: 1.8; max-width: 800px;">
-    <p style="margin-bottom: 8px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-    <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color: #B08D57; text-decoration: none;">tiandingtr@gmail.com</a></p>
-  </div>
-</footer>
+<!-- 引入全局组件脚本 -->
+<script src="assets/global.js"></script>
+
 <script>
-const navHeader = document.querySelector('.custom-nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navHeader.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-  } else {
-    navHeader.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-  }
-});
-
+// 滚动动画
 const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -295,9 +230,9 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, observerOptions);
-
 document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
 
+// 表单逻辑
 (function(){
   var f=document.getElementById('inq');
   f.addEventListener('submit',function(e){
