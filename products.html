@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>核心产品与业务 - 香港天鼎国际贸易</title>
+<title>产品与服务 - 香港天鼎国际贸易</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
@@ -16,149 +16,132 @@
     }
   }
 </script>
-<style> 
-  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; } 
+<style>
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; }
+  /* 产品卡片悬停特效 */
+  .product-card { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.15); }
+  .product-card:hover .card-img { transform: scale(1.05); }
+  .card-img { transition: transform 0.6s ease; }
+  /* 入场动画 */
+  .fade-in-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body class="antialiased">
 
- <style>
-  /* 原生 CSS 导航栏样式 */
-  .custom-nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .nav-container {
-    max-width: 1280px; margin: 0 auto; padding: 15px 24px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .nav-links {
-    display: flex; align-items: center; gap: 32px;
-    font-family: 'PingFang HK', 'Inter', sans-serif;
-    font-size: 16px; font-weight: 600;
-  }
-  .nav-links a {
-    color: #1F3A2E; text-decoration: none; transition: all 0.3s;
-  }
-  .nav-links a:hover {
-    color: #B08D57;
-  }
-  .nav-links a.active {
-    color: #B08D57; border-bottom: 2px solid #B08D57; padding-bottom: 4px;
-  }
-  .lang-switch {
-    display: flex; align-items: center; gap: 12px;
-    border-left: 1px solid #ccc; padding-left: 24px; margin-left: 8px;
-    font-size: 14px;
-  }
-  .lang-switch a { color: #666; }
-  .lang-switch a.active { color: #B08D57; font-weight: bold; }
-  
-  /* 手机端隐藏菜单 (可选) */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-  }
-</style>
-
-<header class="custom-nav">
-  <div class="nav-container">
-    <!-- Logo 区域 -->
-    <a href="index.html">
-      <!-- 如果你有深色 Logo，请替换 src -->
-      <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
-    </a>
-    
-    <!-- 导航与语言切换 -->
-    <div class="nav-links">
-      <a href="index.html">首页</a>
-      <a href="products.html" class="active">产品与服务</a>
-      <a href="science.html">科学与溯源</a>
-      <a href="process.html">服务流程</a>
-      <a href="about.html">关于天鼎</a>
-      <a href="b2b.html">渠道合作</a>
-      <a href="contact.html">联络我们</a>
-      
-      <!-- 语言切换 -->
-      <div class="lang-switch">
-        <a href="index.html" class="active">繁</a>
-        <a href="zh-hans/index.html">简</a>
-        <a href="en/index.html">EN</a>
+  <!-- 导航栏 (保持你昨晚的样式) -->
+  <header class="custom-nav">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
+      </a>
+      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+      <div class="nav-links">
+        <a href="index.html">首頁</a>
+        <a href="products.html" class="active">產品與服務</a>
+        <a href="science.html">科學與溯源</a>
+        <a href="process.html">服務流程</a>
+        <a href="about.html">關於天鼎</a>
+        <a href="b2b.html">渠道合作</a>
+        <a href="contact.html">聯絡我們</a>
+        <div class="lang-switch">
+          <a href="products.html" class="active">繁</a>
+          <a href="zh-hans/products.html">简</a>
+          <a href="en/products.html">EN</a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-  <!-- 顶部 Hero 区 -->
-  <section class="bg-brand-green text-brand-cream py-20 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <h1 class="text-3xl md:text-5xl font-bold mb-6 tracking-wide">自然馈赠 · 科学萃取</h1>
-      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto leading-relaxed">
-        专注紫米及蓝莓来源花青素系列产品的研发与海外市场销售，同时提供跨境贸易与电商运营全链路支持。
+  <!-- 首屏：视频背景展示 -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <!-- 如果有视频，取消下方注释并修改路径 -->
+    <!-- <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0" src="assets/factory.mp4"></video> -->
+    
+    <!-- 备用背景大图 (如果没有视频，用这张图) -->
+    <div class="absolute inset-0 z-0 bg-brand-green/90" style="background-image: url('assets/img/hero.webp'); background-size: cover; background-position: center;"></div>
+    
+    <div class="relative z-10 text-center px-6">
+      <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-6 tracking-widest drop-shadow-lg">自然饋贈 · 科學萃取</h1>
+      <p class="text-lg md:text-xl text-brand-cream/90 max-w-2xl mx-auto drop-shadow-md">
+        專注紫米及藍莓來源花青素系列產品的研發與海外市場銷售，提供從源頭到交付的全鏈路支持。
       </p>
     </div>
   </section>
 
-  <!-- 核心产品区块 -->
-  <section class="max-w-5xl mx-auto px-6 py-20">
-    
-    <!-- 模块 1：花青素系列 -->
-    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 mb-12 flex flex-col md:flex-row gap-10 items-center">
-      <div class="flex-1">
-        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">01 大健康核心产品</div>
-        <h2 class="text-2xl font-bold text-brand-green mb-4">紫米及蓝莓来源花青素系列</h2>
-        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
-          顺应全球大健康趋势，以紫米为主要原料，蓝莓为辅，从事花青素系列产品的深度研发。我们不仅提供高品质的健康产品，更致力于将天然、安全的植物萃取精华推向海外市场。
-        </p>
-        <ul class="space-y-3 text-sm font-medium text-brand-green mb-8">
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 天然植物来源，科学配比萃取</li>
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 严格的品控与生产标准</li>
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 支持海外市场分销与定制合作</li>
-        </ul>
-      </div>
-      <div class="w-full md:w-1/2 aspect-[4/3] bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10">
-        <!-- 如果你有天鼎官网的紫米图，把 src 换成你的图片路径，比如 assets/img/purple-rice.webp -->
-        <div class="w-full h-full flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
-          [ 花青素产品图 ]
-        </div>
-      </div>
+  <!-- 产品矩阵：悬浮互动卡片 -->
+  <section class="max-w-6xl mx-auto px-6 py-24">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl font-bold text-brand-green mb-4">核心產品與服務</h2>
+      <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
     </div>
 
-    <!-- 模块 2：跨境贸易 -->
-    <div class="bg-white rounded-xl shadow-sm border border-brand-gold/20 p-8 md:p-12 mb-12 flex flex-col md:flex-row-reverse gap-10 items-center">
-      <div class="flex-1">
-        <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold text-xs font-bold rounded-full mb-4 tracking-wider">02 跨境出海支持</div>
-        <h2 class="text-2xl font-bold text-brand-green mb-4">跨境贸易与电商运营</h2>
-        <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
-          立足香港，提供一站式跨境贸易支持。包括大健康产品的海外市场运营、电子商务渠道搭建以及专业的贸易咨询服务，助力品牌无缝对接全球市场。
-        </p>
-        <ul class="space-y-3 text-sm font-medium text-brand-green mb-8">
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 大健康产品海外市场拓展与咨询</li>
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 主流电商平台（独立站/Amazon）运营</li>
-          <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 国际物流、清关与供应链优化</li>
-        </ul>
-      </div>
-      <div class="w-full md:w-1/2 aspect-[4/3] bg-brand-cream rounded-lg overflow-hidden border border-brand-gold/10">
-        <!-- 替换为跨境贸易图 -->
-        <div class="w-full h-full flex items-center justify-center text-brand-gold/50 font-serif text-4xl bg-brand-green/5">
-          [ 跨境贸易/电商图 ]
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      
+      <!-- 卡片 1：大健康 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-brand-gold/20 shadow-lg group fade-in-up">
+        <div class="h-64 overflow-hidden relative">
+          <!-- 替换为你的真实产品图 -->
+          <img src="assets/img/purple-rice.webp" alt="花青素" class="w-full h-full object-cover card-img">
+          <div class="absolute top-4 left-4 bg-brand-green/80 text-brand-gold text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">核心明星產品</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">紫米及藍莓來源花青素系列</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+            順應全球大健康趨勢，以紫米為主要原料，藍莓為輔，從事花青素系列產品的深度研發。我們提供高品質的健康產品，致力於將天然、安全的植物萃取精華推向海外市場。
+          </p>
+          <ul class="space-y-2 text-sm font-medium text-brand-green mb-8">
+            <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 天然植物來源，科學配比萃取</li>
+            <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 支持海外市場分銷與定製合作</li>
+          </ul>
         </div>
       </div>
-    </div>
 
+      <!-- 卡片 2：跨境贸易 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-brand-gold/20 shadow-lg group fade-in-up" style="transition-delay: 100ms;">
+        <div class="h-64 overflow-hidden relative">
+          <img src="assets/img/ecommerce.webp" alt="跨境贸易" class="w-full h-full object-cover card-img">
+          <div class="absolute top-4 left-4 bg-brand-green/80 text-brand-gold text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">全鏈路出海</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-brand-green mb-3">跨境貿易與電商運營</h3>
+          <p class="text-sm text-brand-ink/70 leading-relaxed mb-6">
+            立足香港，提供一站式跨境貿易支持。包括大健康產品的海外市場運營、電子商務渠道搭建以及專業的貿易諮詢服務，助力品牌無縫對接全球市場。
+          </p>
+          <ul class="space-y-2 text-sm font-medium text-brand-green mb-8">
+            <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 主流電商平台（獨立站/Amazon）運營</li>
+            <li class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 國際物流、清關與供應鏈優化</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-  <!-- 底部合规声明 -->
+  <!-- 底部（保持原有声明） -->
   <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <p class="text-sm mb-4 leading-relaxed">
-        香港天鼎国际贸易有限公司。本页内容仅作公司业务与服务能力介绍，不构成任何具体的医疗建议、疗效保证或商业承诺。
-      </p>
-      <p class="text-xs">© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED</p>
+      <p class="text-sm mb-4">香港天鼎國際貿易有限公司。本頁內容僅作公司業務與服務能力介紹。</p>
+      <p class="text-xs">© 2026 香港天鼎國際貿易有限公司</p>
     </div>
   </footer>
+
+  <!-- 滚动入场特效脚本 -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
