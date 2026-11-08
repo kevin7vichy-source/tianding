@@ -35,7 +35,7 @@ img{display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25, 1,
 .reveal.active{opacity:1;transform:translateY(0)}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
 
-/* ================= 1. 导航栏 (合并纯净版 + 移动端折叠) ================= */
+/* ================= 1. 导航栏 ================= */
 .custom-nav {position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.1);transition:all 0.3s ease;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
 .nav-container {max-width:1280px;margin:0 auto;padding:15px 24px;display:flex;justify-content:space-between;align-items:center}
 .nav-links {display:flex;align-items:center;gap:32px;font-size:15px;font-weight:600}
@@ -74,7 +74,6 @@ img{display:block;max-width:100%;transition:transform 0.6s cubic-bezier(0.25, 1,
 .hero p{max-width:600px;color:#E6E0D2;font-size:17px;line-height:1.85;opacity:0.92}
 .rule{width:60px;height:3px;background:var(--au);margin:32px 0;border-radius:2px}
 
-/* 科技感按钮流光特效 */
 .cta{display:inline-flex;align-items:center;gap:10px;background:rgba(176,141,87,0.12);border:1px solid var(--au);color:var(--au-light);padding:14px 36px;font-size:15px;letter-spacing:.15em;position:relative;overflow:hidden;cursor:pointer;transition:all 0.4s ease;border-radius:2px}
 .cta::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent);transition:left 0.6s ease}
 .cta:hover{background:var(--au);color:var(--g-dark);box-shadow:0 8px 24px rgba(176,141,87,0.3);transform:translateY(-2px);font-weight:600}
@@ -103,7 +102,7 @@ section{padding:110px 0}
 .biz h3{font-size:20px;color:var(--g);margin:8px 0 12px;line-height:1.45}
 .biz p{color:var(--mu);font-size:14.5px;line-height:1.75;letter-spacing:.01em}
 
-/* ================= 4. 联系我们与科技感表单光晕 ================= */
+/* ================= 4. 联系我们 ================= */
 .ct{background:linear-gradient(135deg, var(--g-dark) 0%, var(--g) 100%);color:#EDE7DA;position:relative;overflow:hidden}
 .ct::before{content:'';position:absolute;width:600px;height:600px;border:1px solid rgba(217,194,154,0.1);border-radius:50%;top:-200px;right:-100px;pointer-events:none}
 .ct::after{content:'';position:absolute;width:400px;height:400px;border:1px solid rgba(217,194,154,0.05);border-radius:50%;bottom:-100px;left:-100px;pointer-events:none}
@@ -130,15 +129,13 @@ button{justify-self:start;font-family:var(--font-sans);font-weight:600;font-size
 button:hover{background:var(--au-light);transform:translateY(-2px);box-shadow:0 8px 20px rgba(176,141,87,0.25)}
 .note{font-size:13px;color:#9E978A;margin-top:4px}
 
-/* ================= 5. 底部 (绝对居中版) ================= */
+/* ================= 5. 底部 (绝对居中修正版) ================= */
 footer{background:#111f19;color:#8A8275;font-size:13px;padding:40px 0;border-top:1px solid rgba(255,255,255,0.05)}
-footer .footer-container{max-width:800px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
-footer img{height:28px;filter:brightness(0) invert(0.7)}
-footer .footer-text{line-height:1.8;font-size:12px}
-footer a{color:#B08D57;transition:color 0.3s}
-footer a:hover{color:#fff}
+.footer-inner{max-width:800px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
+.footer-inner img{height:32px;width:auto;filter:brightness(0) invert(0.7);opacity:0.9}
+.footer-text{line-height:1.8;font-size:12px}
 
-/* ================= 6. 响应式 (微调) ================= */
+/* ================= 6. 响应式 ================= */
 @media(max-width:860px){
   .hero{height:auto;padding:150px 0 90px}
   .hero h1{font-size:34px}
@@ -155,19 +152,14 @@ footer a:hover{color:#fff}
 </head>
 <body>
 
-<!-- 导航栏 (自适应折叠版) -->
 <header class="custom-nav">
   <div class="nav-container">
     <a href="index.html" class="flex items-center">
       <img src="assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;">
     </a>
-
-    <!-- 手机端汉堡按钮 -->
     <button class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('show')">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
     </button>
-
-    <!-- 导航菜单 -->
     <div class="nav-links" id="nav-menu">
       <a href="index.html" class="active">首頁</a>
       <a href="products.html">產品與服務</a>
@@ -176,7 +168,6 @@ footer a:hover{color:#fff}
       <a href="about.html">關於天鼎</a>
       <a href="b2b.html">渠道合作</a>
       <a href="contact.html">聯絡我們</a>
-      
       <div class="lang-switch">
         <a href="index.html" class="active">繁</a>
         <a href="zh-hans/index.html">简</a>
@@ -186,7 +177,6 @@ footer a:hover{color:#fff}
   </div>
 </header>
 
-<!-- 首屏区 -->
 <div class="hero" id="top">
   <img src="assets/img/hero.webp" class="hero-bg" alt="面向維多利亞港的會議室" width="1600" height="900">
   <div class="in">
@@ -202,7 +192,6 @@ footer a:hover{color:#fff}
   </div>
 </div>
 
-<!-- 业务范畴 -->
 <section id="business">
   <div class="w">
     <div class="sh reveal">
@@ -233,7 +222,6 @@ footer a:hover{color:#fff}
   </div>
 </section>
 
-<!-- 联系我们 -->
 <section class="ct" id="contact">
   <div class="w">
     <div class="sh reveal">
@@ -269,25 +257,20 @@ footer a:hover{color:#fff}
     </div>
   </div>
 </section>
- <!-- 底部 (绝对居中纯文字版) -->
-  <footer class="bg-brand-green text-brand-cream/60 py-12 border-t border-brand-gold/20 mt-auto">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center text-center gap-4 text-sm">
-      
-      <!-- 用纯文字+CSS写Logo，绝对不裂图 -->
-      <div class="flex items-center justify-center gap-3 mb-2 opacity-80">
-        <span class="w-8 h-8 bg-brand-gold text-brand-green flex items-center justify-center rounded font-serif font-bold text-lg">鼎</span>
-        <span class="text-xl font-bold tracking-widest text-brand-cream">天鼎國際</span>
-      </div>
 
-      <div class="text-xs leading-relaxed">
-        <p class="mb-2">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-        <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" class="text-brand-gold hover:text-white transition">tiandingtr@gmail.com</a></p>
-      </div>
+<!-- 全新纯净版底部 -->
+<footer>
+  <div class="footer-inner">
+    <!-- 直接读取真实的白底 Logo -->
+    <img src="assets/logo-horizontal-white.svg" alt="天鼎國際">
+    <div class="footer-text">
+      <p style="margin-bottom:6px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
+      <p>© 2026 香港天鼎國際貿易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color:#B08D57;text-decoration:none;">tiandingtr@gmail.com</a></p>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script>
-// 1. 导航栏滚动监听
 const navHeader = document.querySelector('.custom-nav');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
@@ -297,7 +280,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// 2. 滚动入场动画
 const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -310,7 +292,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
 
-// 3. 表单邮件唤起逻辑
 (function(){
   var f=document.getElementById('inq');
   f.addEventListener('submit',function(e){
