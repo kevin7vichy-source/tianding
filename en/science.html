@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Science & Traceability - HK TIANDING</title>
+<title>Science & Traceability - HK TIANDING INTERNATIONAL TRADE</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: { brand: { green: '#1F3A2E', gold: '#B08D57', cream: '#F7F4EC', ink: '#23201B' } },
-        fontFamily: { sans: ['Inter', 'sans-serif'] }
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'sans-serif'] }
       }
     }
   }
 </script>
 <style>
-  body { font-family: 'Inter', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
   
-  /* Navigation */
+  /* Global Nav & Footer Styles (Anti-flicker) */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
-  .nav-links { display: flex; align-items: center; gap: 32px; font-size: 15px; font-weight: 600; }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 600; }
   .nav-links a { color: #1F3A2E; text-decoration: none; transition: all 0.3s; }
   .nav-links a:hover { color: #B08D57; }
   .nav-links a.active { color: #B08D57; border-bottom: 2px solid #B08D57; padding-bottom: 4px; }
@@ -40,117 +40,215 @@
   /* Animations */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
-  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.2); }
+  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.22); }
   .tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.1); border-color: #B08D57; }
-  .data-num { font-size: 3rem; font-weight: 700; color: #1F3A2E; line-height: 1; }
+  .data-num { font-size: 2.6rem; font-weight: 700; color: #1F3A2E; line-height: 1.1; }
 </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
-  <!-- Navigation -->
-  <header class="custom-nav">
-    <div class="nav-container">
-      <a href="index.html"><img src="../assets/logo-horizontal.svg" alt="TIANDING" style="height: 40px;"></a>
-      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products & Services</a>
-        <a href="science.html" class="active">Science & Traceability</a>
-        <a href="process.html">Our Process</a>
-        <a href="about.html">About Us</a>
-        <a href="b2b.html">Partners</a>
-        <a href="contact.html">Contact</a>
-        <div class="lang-switch">
-          <a href="../science.html">繁</a>
-          <a href="../zh-hans/science.html">简</a>
-          <a href="science.html" class="active">EN</a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!-- Automated Placeholder: Global Header -->
+  <div id="global-header"></div>
 
   <!-- Hero Section -->
-  <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-green">
+  <section class="relative h-[60vh] min-h-[420px] flex items-center justify-center overflow-hidden bg-brand-green">
     <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
     <div class="relative z-10 text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-widest drop-shadow-lg">Scientific Extraction · Direct from Source</h1>
-      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto">
-        From the natural gifts of purple rice and blueberries, to rigorous extraction in high-tech sterile facilities. We don't just supply products; we provide traceable scientific evidence.
+      <div class="inline-block px-4 py-1 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-bold rounded-full mb-5 tracking-widest uppercase">GRAIN-DERIVED ANTHOCYANIN · PIONEER IN BIO-EXTRACTION</div>
+      <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-wide drop-shadow-lg">Scientific Extraction · Direct Source</h1>
+      <p class="text-lg text-brand-cream/85 max-w-3xl mx-auto leading-relaxed">
+        From cold-region purple rice bran cultivated in one of the world's four major black soil belts to rigorous purification in our 6th-Gen Industry 4.0 bionic workshops—we deliver high-purity anthocyanins backed by full scientific traceability.
       </p>
     </div>
   </section>
 
-  <!-- Core Ingredient Section -->
-  <section class="max-w-5xl mx-auto px-6 py-24">
+  <!-- Core Bio-Active Overview (3 Metric Cards) -->
+  <section class="max-w-6xl mx-auto px-6 py-24">
     <div class="text-center mb-16 reveal">
-      <h2 class="text-3xl font-bold text-brand-green mb-4">What is Anthocyanin?</h2>
-      <p class="text-brand-ink/70 max-w-3xl mx-auto leading-relaxed">
-        Anthocyanin is a powerful natural antioxidant widely found in dark plants like purple rice and blueberries. Our R&D team uses purple rice as the primary source and blueberries as a supplement, transforming this natural gift into easily absorbable health products through modern bio-extraction technology.
+      <h2 class="text-3xl font-bold text-brand-green mb-4">What is Grain-Derived Anthocyanin (C3G)?</h2>
+      <p class="text-brand-ink/75 max-w-3xl mx-auto leading-relaxed">
+        Anthocyanins are globally recognized potent natural free-radical scavengers. Breaking through the limitations of traditional berry extraction, HK Tianding selects cold-region black soil purple rice bran for targeted extraction of highly stable <strong class="text-brand-green">Cyanidin-3-O-glucoside (C3G)</strong>—creating a next-generation nutraceutical ingredient with high bio-activity, high purity, and zero fructose burden.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.1s;">
-        <div class="text-brand-gold text-4xl mb-6">🔬</div>
-        <div class="data-num text-brand-gold mb-2">100%</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">Scientific Proportion</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">Through repeated testing by our overseas-returned R&D team, we find the optimal extraction ratio of purple rice and blueberries.</p>
+        <div class="text-brand-gold text-4xl mb-5">🔬</div>
+        <div class="data-num text-brand-gold mb-2">~30%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">High-Purity C3G Dominant</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">Purified anthocyanin content reaches ~30% (measured as Cyanidin-3-O-glucoside), featuring a well-defined monomer structure with superior bioavailability and metabolic health support.</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.2s;">
-        <div class="text-brand-gold text-4xl mb-6">🛡️</div>
-        <div class="data-num text-brand-gold mb-2">Natural</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">Antioxidant Activity</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">Retaining the natural active ingredients of plants, fighting free radicals and providing daily health care for the body.</p>
+        <div class="text-brand-gold text-4xl mb-5">🛡️</div>
+        <div class="data-num text-brand-gold mb-2">97%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">97% Activity &amp; Acylated Stability</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">Innovative low-temperature extraction preserves up to 97% bio-activity. Naturally existing in an acylated molecular form, purple rice anthocyanins offer far greater stability than free-state berry extracts.</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.3s;">
-        <div class="text-brand-gold text-4xl mb-6">🌱</div>
-        <div class="data-num text-brand-gold mb-2">0</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">Harmful Additives</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">Strictly selecting high-quality crops, rejecting harmful chemical additives to ensure product purity and safety.</p>
+        <div class="text-brand-gold text-4xl mb-5">🌾</div>
+        <div class="data-num text-brand-gold mb-2">0 Sugar</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">Seamless Low-GI Integration</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">Sourced from purple rice bran by-products without the high sugar load of berry purees. Zero harmful chemical additives, making it ideal for low-GI staples, meal replacements, and functional bakery.</p>
       </div>
     </div>
   </section>
 
-  <!-- HIT Technology Section -->
+  <!-- Core Section: Three Full-Chain Competitive Pillars -->
+  <section class="bg-[#EFECE2] py-24 border-y border-brand-gold/20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2">FULL-CHAIN COMPETITIVENESS</div>
+        <h2 class="text-3xl font-bold text-brand-green mb-4">Three Core Full-Industry-Chain Pillars</h2>
+        <p class="text-brand-ink/70 max-w-2xl mx-auto">
+          Globally, very few enterprises simultaneously possess both large-scale black-soil cultivation bases and industrialized low-temperature extraction capabilities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Pillar 1: Raw Material -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.1s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">01 / RAW MATERIAL</span>
+            <span class="text-base font-bold text-brand-green">Black Soil Belt</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">1. Raw Material: Large-Scale Black Soil Cultivation &amp; Full Traceability</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            Located in Northeast China—one of the world's four major black soil belts—our contiguous purple rice plantations benefit from rich organic matter and wide day-night temperature shifts that concentrate anthocyanins in the seed coat and bran layer. Using purple rice bran as the raw material, we achieve <strong class="text-brand-green">integrated "Cultivation—Milling—Extraction"</strong> with consistent batch quality and 100% traceability.
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> World's Top 4 Black Soil Belt ecology</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Integrated Planting—Processing—Extraction</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Immune to seasonal fluctuations; batch consistency</div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Extraction Tech -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.2s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">02 / EXTRACTION TECH</span>
+            <span class="text-base font-bold text-brand-green">Acylated Stability</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">2. Process: Low-Temp Extraction &amp; Acylated Structure for High Purity</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            Our innovative low-temperature extraction prevents thermal degradation of the anthocyanin core, boosting bio-activity retention to <strong class="text-brand-green">97%</strong> (vs. conventional high-heat extraction) and achieving <strong class="text-brand-green">~30% purified content</strong> (as C3G). Because black rice anthocyanins predominantly exist in an acylated form, their structural stability naturally outperforms free-state berry anthocyanins.
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> &lt;45°C extraction with 97% activity retention</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> ~30% purified C3G concentration</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Natural acylated form for superior thermal stability</div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Market Application -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.3s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">03 / BLUE OCEAN MARKET</span>
+            <span class="text-base font-bold text-brand-green">Low-GI Wellness</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">3. Application: Grain-Derived Differentiation &amp; Blue Ocean Markets</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            Dominated by C3G (unlike berry delphinidin/malvidin glycosides), grain-derived anthocyanins show distinct research value in <strong class="text-brand-green">inhibiting adipocyte differentiation and slowing carbohydrate absorption</strong>. Unlike seasonal, high-sugar berry purees, rice-bran-derived anthocyanins blend seamlessly into staples, meal replacements, and bakery—naturally fitting <strong class="text-brand-green">Western "Low-GI Staple Replacement"</strong> and <strong class="text-brand-green">Southeast Asian metabolic health</strong> demands.
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Inhibits adipocyte differentiation &amp; slows carb uptake</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Ideal for staples, meal replacements &amp; bakery carriers</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> Targets Western Low-GI &amp; SEA metabolic health markets</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grain-Derived vs Berry-Derived Comparison Table -->
+      <div class="mt-14 bg-brand-green rounded-3xl p-8 md:p-12 text-brand-cream shadow-xl reveal">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-brand-gold/25 pb-6">
+          <div>
+            <div class="text-xs font-bold text-brand-gold tracking-widest uppercase mb-2">TECHNICAL COMPARISON</div>
+            <h3 class="text-2xl font-bold">Why Grain-Derived (Purple Rice) Anthocyanin Leads the Market</h3>
+          </div>
+          <span class="text-xs text-brand-cream/60">Tianding Purple Rice Bran Anthocyanin VS. Traditional Berry (Blueberry/Bilberry)</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-brand-gold/30 text-brand-gold">
+                <th class="py-4 px-4 w-1/5 font-bold">Dimension</th>
+                <th class="py-4 px-5 w-2/5 bg-brand-gold/15 border-l-2 border-brand-gold text-white font-bold">Tianding Grain-Derived (Purple Rice Bran)</th>
+                <th class="py-4 px-5 w-2/5 text-brand-cream/70 font-semibold">Traditional Berry-Derived (Blueberry / Bilberry)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10">
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">Core Monomer</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">Dominated by <strong>Cyanidin-3-O-glucoside (C3G)</strong>, purified up to ~30%</td>
+                <td class="py-4 px-5 text-brand-cream/70">Dominated by delphinidin &amp; malvidin glycosides; complex monomer mix</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">Molecular Stability</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">Predominantly <strong>acylated structure</strong>; naturally superior heat &amp; processing stability</td>
+                <td class="py-4 px-5 text-brand-cream/70">Mostly free-state anthocyanins; prone to oxidation and thermal degradation</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">Health Mechanism</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">Potent antioxidant + <strong>inhibits adipocyte differentiation &amp; slows carb absorption</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">General antioxidant &amp; eye care; highly homogenized market competition</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">Carrier &amp; Sugar Load</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">Sourced from rice bran with zero fructose; <strong>fits low-GI staples, shakes &amp; bakery</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">High sugar content in fruit puree; difficult to use in low-GI or baked carriers</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">Supply &amp; Cost</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">Contiguous black-soil farming + industrial extraction; <strong>~9 RMB/g with stable supply</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">Constrained by origin, harvest season &amp; cold chain; high cost (~50 RMB/g)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Section: HIT Joint R&D Advantage -->
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6">
       <div class="bg-brand-green rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
         <div class="p-10 md:p-16 md:w-3/5 text-brand-cream">
-          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">Co-developed with HIT · World-Leading</div>
-          <h2 class="text-3xl font-bold mb-6">6th Gen Industrial 4.0 Low-Temp Biomimetic Extraction</h2>
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">JOINT R&amp;D WITH HIT · GLOBALLY LEADING</div>
+          <h2 class="text-3xl font-bold mb-6">6th-Gen Industry 4.0 Low-Temp Bionic Extraction</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-6">
-            Anthocyanins are highly sensitive to temperature. Traditional high-temperature extraction (60°C-80°C) easily causes polyphenol degradation. The biomimetic technology developed by Prof. Wang Zhenyu's team at HIT strictly controls the temperature below <strong class="text-brand-gold">45°C</strong>, effectively simulating the natural biochemical environment within plants.
+            Anthocyanins are highly temperature-sensitive; conventional 60°C–80°C thermal extraction easily destroys the polyphenol core. Developed by Prof. Wang Zhenyu's team at Harbin Institute of Technology (HIT), our bionic extraction strictly keeps temperatures <strong class="text-brand-gold">below 45°C</strong>, simulating natural biochemical environments to achieve maximum bio-activity and purity.
           </p>
           
           <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="bg-white/5 p-4 rounded-xl border border-white/10 opacity-70">
-              <div class="text-xs text-brand-cream/50 mb-1">Traditional Hot Extraction</div>
-              <div class="text-2xl font-bold mb-1 line-through decoration-rose-500">HKD 50/g</div>
-              <div class="text-[11px] text-brand-cream/50">Activity Retention: ~60%-75%</div>
+              <div class="text-xs text-brand-cream/50 mb-1">Traditional High-Temp (Blueberry)</div>
+              <div class="text-2xl font-bold mb-1 line-through decoration-rose-500">50 RMB / g</div>
+              <div class="text-[11px] text-brand-cream/50">Only ~60%–75% activity retained</div>
             </div>
             <div class="bg-brand-gold/10 p-4 rounded-xl border border-brand-gold shadow-[0_0_15px_rgba(176,141,87,0.2)]">
-              <div class="text-xs text-brand-gold mb-1 font-bold">Biomimetic (Purple Rice)</div>
-              <div class="text-2xl font-bold text-brand-gold mb-1">HKD 9/g</div>
-              <div class="text-[11px] text-brand-gold/80 font-bold">Activity up to 97%, industry-leading</div>
+              <div class="text-xs text-brand-gold mb-1 font-bold">Low-Temp Bionic (Purple Rice)</div>
+              <div class="text-2xl font-bold text-brand-gold mb-1">9 RMB / g</div>
+              <div class="text-[11px] text-brand-gold/80 font-bold">Up to 97% activity · ~30% C3G purity</div>
             </div>
           </div>
 
           <ul class="space-y-3 text-sm font-medium">
-            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> Fully Industrial 4.0 cleanroom stainless steel smart production line</li>
-            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> National High-Tech Enterprise, leading national standards for anthocyanins</li>
+            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> End-to-end Industry 4.0 clean stainless-steel automated lines</li>
+            <li class="flex items-center gap-2"><span class="text-brand-gold text-lg">✓</span> National High-Tech Enterprise leading national anthocyanin standards</li>
           </ul>
         </div>
         
         <div class="md:w-2/5 bg-[#152a20] relative overflow-hidden min-h-[300px]">
-           <img src="../assets/img/tech.jpg" alt="Industrial 4.0 Extraction" class="absolute inset-0 w-full h-full object-cover">
+           <img src="../assets/img/tech.jpg" alt="Industry 4.0 Extraction Technology" class="absolute inset-0 w-full h-full object-cover">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Base & Capacity Section -->
+  <!-- Full-Width Immersive Base Showcase -->
   <section class="bg-brand-green text-brand-cream py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center gap-16">
@@ -158,45 +256,33 @@
           <div class="aspect-[4/3] bg-brand-cream/10 border border-brand-gold/30 rounded-2xl overflow-hidden relative shadow-2xl">
              <video autoplay loop muted playsinline poster="../assets/img/hero.webp" class="w-full h-full object-cover">
                <source src="../assets/img/factory.mp4" type="video/mp4">
-               Your browser does not support the video tag.
+               Your browser does not support video playback.
              </video>
           </div>
         </div>
         <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.2s;">
-          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">Hardcore Source Capacity</div>
-          <h2 class="text-3xl font-bold mb-6">Jiansanjiang · 50 Million Mu Purple Rice Base</h2>
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">SOURCE CAPACITY · BLACK SOIL BELT</div>
+          <h2 class="text-3xl font-bold mb-6">Jiansanjiang, Heilongjiang · 500,000-Mu Purple Rice Base</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-8">
-            Our deep-cooperation industrial park relies on the 12 million mu of paddy fields in Jiansanjiang, owning China's largest <strong class="text-brand-gold">500,000 mu (approx. 330,000 acres) purple rice planting base</strong>, producing 250,000 tons of purple rice annually. We control quality from the source to ensure a pure and stable supply.
+            Located in Northeast China's black soil belt and backed by 12 million mu of paddies in Jiansanjiang, our partner industrial park operates China's largest contiguous <strong class="text-brand-gold">500,000-mu (~33,300 hectares) purple rice plantation</strong> with an annual output of 250,000 tons. Integrated "Cultivation—Processing—Extraction" guarantees stable supply and 100% traceability.
           </p>
           <ul class="space-y-4 text-sm font-medium">
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> National High-Tech Enterprise, precision agriculture R&D</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> High-standard extraction, inspection and quarantine systems</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> Strictly approved food production license for global compliance</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> National High-Tech Enterprise in precision agriculture &amp; nutraceutical R&amp;D</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> Rigorous anthocyanin extraction, inspection, and quarantine standards</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> Fully licensed food production for compliant global export to Western &amp; SEA markets</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 简体中文版底部 -->
-  <footer style="background-color: #111f19; padding: 40px 20px; border-top: 1px solid rgba(176,141,87,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-    
-    <!-- 纯代码绘制的 Logo -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px;">
-      <div style="width: 42px; height: 42px; background-color: #B08D57; color: #1F3A2E; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-family: serif; font-size: 24px; font-weight: bold;">鼎</div>
-      <div style="text-align: left;">
-        <div style="color: #F7F4EC; font-size: 22px; font-weight: bold; letter-spacing: 2px; line-height: 1.2;">天鼎国际</div>
-        <div style="color: #B08D57; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;">TIANDING</div>
-      </div>
-    </div>
+  <!-- Automated Placeholder: Global Footer -->
+  <div id="global-footer" class="mt-auto"></div>
 
-    <!-- 地址和版权 -->
-    <div style="color: rgba(247, 244, 236, 0.6); font-size: 12px; line-height: 1.8; max-width: 800px;">
-      <p style="margin-bottom: 8px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-      <p>© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color: #B08D57; text-decoration: none;">tiandingtr@gmail.com</a></p>
-    </div>
-  </footer>
-  <!-- Scripts -->
+  <!-- Global Component Script -->
+  <script src="../assets/global.js"></script>
+
+  <!-- Scroll Reveal Script -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
