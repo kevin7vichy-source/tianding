@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hans-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +19,10 @@
 <style>
   body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #F7F4EC; color: #23201B; overflow-x: hidden; }
   
-  /* 导航栏 */
+  /* 全局导航与底部样式（防闪烁） */
   .custom-nav { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
   .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
-  .nav-links { display: flex; align-items: center; gap: 32px; font-family: 'PingFang SC', 'Inter', sans-serif; font-size: 16px; font-weight: 600; }
+  .nav-links { display: flex; align-items: center; gap: 32px; font-size: 16px; font-weight: 600; }
   .nav-links a { color: #1F3A2E; text-decoration: none; transition: all 0.3s; }
   .nav-links a:hover { color: #B08D57; }
   .nav-links a.active { color: #B08D57; border-bottom: 2px solid #B08D57; padding-bottom: 4px; }
@@ -40,103 +40,198 @@
   /* 动效 */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
-  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.2); }
+  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.22); }
   .tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.1); border-color: #B08D57; }
-  .data-num { font-size: 3rem; font-weight: 700; color: #1F3A2E; line-height: 1; }
+  .data-num { font-size: 2.75rem; font-weight: 700; color: #1F3A2E; line-height: 1.1; }
 </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
-  <!-- 导航栏 -->
-  <header class="custom-nav">
-    <div class="nav-container">
-      <a href="index.html"><img src="../assets/logo-horizontal.svg" alt="天鼎国际" style="height: 40px;"></a>
-      <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
-      <div class="nav-links">
-        <a href="index.html">首页</a>
-        <a href="products.html">产品与服务</a>
-        <a href="science.html" class="active">科学与溯源</a>
-        <a href="process.html">服务流程</a>
-        <a href="about.html">关于天鼎</a>
-        <a href="b2b.html">渠道合作</a>
-        <a href="contact.html">联络我们</a>
-        <div class="lang-switch">
-          <a href="../science.html">繁</a>
-          <a href="science.html" class="active">简</a>
-          <a href="../en/science.html">EN</a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!-- 自动化占位符：全局导航 -->
+  <div id="global-header"></div>
 
   <!-- 首屏：高科技暗调背景 -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-green">
     <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
     <div class="relative z-10 text-center px-6">
+      <div class="inline-block px-4 py-1 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-bold rounded-full mb-5 tracking-widest uppercase">GRAIN-DERIVED ANTHOCYANIN · 谷物源花青素领航者</div>
       <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-widest drop-shadow-lg">科学萃取 · 源头直供</h1>
-      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto">
-        从紫米与蓝莓的自然馈赠，到高科技无菌车间的严谨提取。我们不仅提供产品，更提供可追溯的科学依据。
+      <p class="text-lg text-brand-cream/85 max-w-2xl mx-auto leading-relaxed">
+        从世界四大黑土带的寒地紫稻米糠，到第六代工业 4.0 低温仿生车间的严谨提纯。我们不仅提供高纯度花青素，更提供可追溯的科学循证依据。
       </p>
     </div>
   </section>
 
-  <!-- 核心成分科普区 -->
-  <section class="max-w-5xl mx-auto px-6 py-24">
+  <!-- 核心成分科普区（三大核心技术指标卡片） -->
+  <section class="max-w-6xl mx-auto px-6 py-24">
     <div class="text-center mb-16 reveal">
-      <h2 class="text-3xl font-bold text-brand-green mb-4">什么是花青素？</h2>
-      <p class="text-brand-ink/70 max-w-3xl mx-auto leading-relaxed">
-        花青素（Anthocyanin）是一种强有力的天然抗氧化剂，广泛存在于紫米、蓝莓等深色植物中。天鼎研发团队以紫米为主、蓝莓为辅，通过现代生物萃取技术，将这份自然馈赠转化为易于吸收的大健康产品。
+      <h2 class="text-3xl font-bold text-brand-green mb-4">什么是谷物源花青素（C3G）？</h2>
+      <p class="text-brand-ink/75 max-w-3xl mx-auto leading-relaxed">
+        花青素（Anthocyanin）是国际公认的强效天然自由基清除剂。天鼎国际突破传统浆果提取局限，严选东北寒地黑土紫稻米糠为核心原料，定向提取高稳定性的<strong class="text-brand-green">「矢车菊素-3-O-葡萄糖苷（C3G）」</strong>，打造高活性、高纯度、零果糖负担的新一代大健康核心原料与终端产品。
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.1s;">
-        <div class="text-brand-gold text-4xl mb-6">🔬</div>
-        <div class="data-num text-brand-gold mb-2">100%</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">科学配比</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">经过海归研发团队的反复测试，寻找紫米与蓝莓的最佳提取比例。</p>
+        <div class="text-brand-gold text-4xl mb-5">🔬</div>
+        <div class="data-num text-brand-gold mb-2">~30%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">高纯度 C3G 主导</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">经纯化后花青素含量高达 30% 左右（以矢车菊素-3-O-葡萄糖苷计），单体结构清晰，具备优异的生物利用度与代谢支持潜力。</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.2s;">
-        <div class="text-brand-gold text-4xl mb-6">🛡️</div>
-        <div class="data-num text-brand-gold mb-2">天然</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">抗氧化活性</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">保留植物天然活性成分，对抗自由基，为身体提供日常健康呵护。</p>
+        <div class="text-brand-gold text-4xl mb-5">🛡️</div>
+        <div class="data-num text-brand-gold mb-2">97%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">高活性与酰基化稳态</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">创新低温物理萃取使活性保留率提升至 97%；黑米花青素多以「酰基化形式」存在，结构稳定性天然优于浆果游离态。</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.3s;">
-        <div class="text-brand-gold text-4xl mb-6">🌱</div>
-        <div class="data-num text-brand-gold mb-2">0</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">有害添加</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">严选优质农作物，拒绝有害化学添加，确保产品的天然与安全。</p>
+        <div class="text-brand-gold text-4xl mb-5">🌾</div>
+        <div class="data-num text-brand-gold mb-2">0 果糖</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">低 GI 载体无缝融合</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">源自紫稻米糠副产物，无浆果果浆高糖痛点，拒绝有害化学添加，完美契合控糖主食、代餐、烘焙等多元健康载体。</p>
       </div>
     </div>
   </section>
 
-  <!-- 核心：哈工大技术优势 (高亮科技区块) -->
+  <!-- 核心板块：三大全产业链壁垒（原料端 · 工艺端 · 应用端） -->
+  <section class="bg-[#EFECE2] py-24 border-y border-brand-gold/20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2">FULL-CHAIN COMPETITIVENESS</div>
+        <h2 class="text-3xl font-bold text-brand-green mb-4">全产业链三大核心壁垒</h2>
+        <p class="text-brand-ink/70 max-w-2xl mx-auto">
+          在全球范围内，同时具备「黑土带规模化种植基础」与「工业化低温萃取能力」的企业仍属少数。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 一、原料端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.1s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">01 / RAW MATERIAL</span>
+            <span class="text-lg font-bold text-brand-green">四大黑土带</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">一、原料端：黑土带规模化种植，供应稳定可追溯</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            基地位于世界四大黑土带之一的中国东北黑土区，连片规模种植紫稻。黑土有机质含量高，昼夜温差大，极利于花青素在种皮和米糠层富集。以紫稻米糠为萃取原料，实现<strong class="text-brand-green">「种植—加工—萃取」一体化</strong>，原料品质批次稳定、来源可追溯。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 东北寒地黑土高有机质生态禀赋</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 种植—加工—萃取全链路一体化把控</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 克服季节与产地波动，批次高度稳定</div>
+          </div>
+        </div>
+
+        <!-- 二、工艺端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.2s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">02 / EXTRACTION TECH</span>
+            <span class="text-lg font-bold text-brand-green">酰基化高稳态</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">二、工艺端：低温萃取加酰基化结构，高活性与高纯度</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            采用创新低温萃取工艺，避免高温对花青素母核的破坏，活性保留率提升至 <strong class="text-brand-green">97%</strong>（较常规高温提取工艺对比数据）；经纯化后花青素含量达 <strong class="text-brand-green">30% 左右</strong>（以矢车菊素-3-O-葡萄糖苷计）。黑米花青素本身多以酰基化形式存在，其结构稳定性天然优于游离态花青素，这是谷物源相对浆果源的核心技术差异所在。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> &lt;45°C 低温提纯，97% 活性保留率</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 纯化后 C3G 含量高达 ~30%</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 天然酰基化结构，耐加工与储存稳定性极佳</div>
+          </div>
+        </div>
+
+        <!-- 三、应用端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.3s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">03 / BLUE OCEAN MARKET</span>
+            <span class="text-lg font-bold text-brand-green">低 GI 代谢蓝海</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">三、应用端：谷物源差异化定位与全球蓝海市场</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            谷物源花青素以 C3G 为主，与蓝莓等浆果类（飞燕草素、锦葵素糖苷为主）结构不同，在<strong class="text-brand-green">抑制脂肪细胞分化、延缓碳水化合物吸收</strong>方面具有研究价值。更关键的是载体差异：浆果受产地、季节和价格波动制约且果浆含糖量高；谷物源源自米糠副产物，可融入主食、代餐、烘焙等载体，天然契合<strong class="text-brand-green">欧美超重人群「低GI主食替代」</strong>与<strong class="text-brand-green">东南亚代谢健康需求</strong>。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 抑制脂肪细胞分化 + 延缓碳水吸收</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 融入主食/代餐/烘焙，克服果浆高糖与高价痛点</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 精准切入欧美低 GI 与东南亚代谢健康蓝海</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 谷物源 vs 浆果源 技术代差对比表 -->
+      <div class="mt-14 bg-brand-green rounded-3xl p-8 md:p-12 text-brand-cream shadow-xl reveal">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-brand-gold/25 pb-6">
+          <div>
+            <div class="text-xs font-bold text-brand-gold tracking-widest uppercase mb-2">TECHNICAL COMPARISON</div>
+            <h3 class="text-2xl font-bold">为什么谷物源（紫稻）花青素更具商业竞争力？</h3>
+          </div>
+          <span class="text-xs text-brand-cream/60">天鼎紫稻米糠花青素 VS 传统浆果类（蓝莓/越橘）花青素</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-brand-gold/30 text-brand-gold">
+                <th class="py-4 px-4 w-1/5 font-bold">对比维度</th>
+                <th class="py-4 px-5 w-2/5 bg-brand-gold/15 border-l-2 border-brand-gold text-white font-bold">天鼎谷物源花青素（寒地紫稻米糠）</th>
+                <th class="py-4 px-5 w-2/5 text-brand-cream/70 font-semibold">传统浆果源花青素（蓝莓等浆果类）</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10">
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">核心分子结构</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">以<strong>矢车菊素-3-O-葡萄糖苷 (C3G)</strong> 为主，纯化含量达 ~30%</td>
+                <td class="py-4 px-5 text-brand-cream/70">以飞燕草素、锦葵素糖苷为主，单体构成复杂</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">结构稳定性</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">多以<strong>「酰基化形式」</strong>存在，耐热、耐光与加工稳定性天然优异</td>
+                <td class="py-4 px-5 text-brand-cream/70">多为游离态花青素，加工与储存过程中极易降解失活</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">核心健康价值</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">强效抗氧化 + <strong>抑制脂肪细胞分化、延缓碳水化合物吸收</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">以常规抗氧化、视力呵护为主，市场同质化严重</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">载体与含糖量</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">源自米糠副产物，无果糖负担；<strong>完美融入主食、代餐、烘焙载体</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">果浆含糖量高，难以应用于控糖、减重及高温烘焙主食场景</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">供应链与成本</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">东北黑土带连片规模种植 + 工业化萃取，<strong>成本仅约 9元/克，批次稳定</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">受产地、季节和鲜果价格波动制约，原料成本高达约 50元/克</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心：哈工大技术优势 -->
   <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-6">
       <div class="bg-brand-green rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
-        <!-- 左侧数据 -->
         <div class="p-10 md:p-16 md:w-3/5 text-brand-cream">
           <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">哈工大联合研发 · 国际领先</div>
           <h2 class="text-3xl font-bold mb-6">第六代工业 4.0 低温仿生萃取</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-6">
-            花青素对温度极为敏感，传统 60°C-80°C 的高温浸提极易引发多酚降解。哈工大王振宇教授团队研发的仿生技术，全程将温度严格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模拟植物体内自然生化反应环境。
+            花青素对温度极为敏感，传统 60°C-80°C 的高温浸提极易引发多酚母核破坏与降解。哈工大王振宇教授团队研发的仿生技术，全程将温度严格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模拟植物体内自然生化反应环境，实现高活性保留与高纯度提取。
           </p>
           
           <div class="grid grid-cols-2 gap-4 mb-8">
-            <!-- 传统工艺 -->
             <div class="bg-white/5 p-4 rounded-xl border border-white/10 opacity-70">
               <div class="text-xs text-brand-cream/50 mb-1">传统高温热浸 (蓝莓)</div>
               <div class="text-2xl font-bold mb-1 line-through decoration-rose-500">50元/克</div>
               <div class="text-[11px] text-brand-cream/50">活性留存仅约 60%-75%</div>
             </div>
-            <!-- 创新工艺 -->
             <div class="bg-brand-gold/10 p-4 rounded-xl border border-brand-gold shadow-[0_0_15px_rgba(176,141,87,0.2)]">
               <div class="text-xs text-brand-gold mb-1 font-bold">创新低温仿生 (紫稻)</div>
               <div class="text-2xl font-bold text-brand-gold mb-1">9元/克</div>
-              <div class="text-[11px] text-brand-gold/80 font-bold">活性高达 97%，领先同业</div>
+              <div class="text-[11px] text-brand-gold/80 font-bold">活性高达 97%，C3G纯度~30%</div>
             </div>
           </div>
 
@@ -146,7 +241,6 @@
           </ul>
         </div>
         
-        <!-- 右侧图片 -->
         <div class="md:w-2/5 bg-[#152a20] relative overflow-hidden min-h-[300px]">
            <img src="../assets/img/tech.jpg" alt="工业 4.0 萃取技术" class="absolute inset-0 w-full h-full object-cover">
         </div>
@@ -154,11 +248,10 @@
     </div>
   </section>
 
-  <!-- 全宽沉浸式基地展示 (已接入 MP4 视频) -->
+  <!-- 全宽沉浸式基地展示 -->
   <section class="bg-brand-green text-brand-cream py-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center gap-16">
-        <!-- 左侧实拍视频 -->
         <div class="w-full md:w-1/2 reveal">
           <div class="aspect-[4/3] bg-brand-cream/10 border border-brand-gold/30 rounded-2xl overflow-hidden relative shadow-2xl">
              <video autoplay loop muted playsinline poster="../assets/img/hero.webp" class="w-full h-full object-cover">
@@ -167,41 +260,27 @@
              </video>
           </div>
         </div>
-        <!-- 右侧文 -->
         <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.2s;">
-          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源头硬核产能</div>
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源头硬核产能 · 四大黑土带</div>
           <h2 class="text-3xl font-bold mb-6">黑龙江建三江 · 50万亩紫稻基地</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-8">
-            天鼎深度合作的产业园，依托建三江 1200 万亩水田，拥有全国最大的 <strong class="text-brand-gold">50 万亩紫稻种植基地</strong>，年产紫稻 25 万吨。从源头把控品质，确保原料的纯净与稳定供应。
+            天鼎深度合作的产业园位于世界四大黑土带之一的中国东北黑土区，依托建三江 1200 万亩水田，拥有全国最大的 <strong class="text-brand-gold">50 万亩连片紫稻种植基地</strong>，年产紫稻 25 万吨。实现「种植—加工—萃取」一体化，确保原料批次稳定与 100% 可追溯。
           </p>
           <ul class="space-y-4 text-sm font-medium">
             <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 国家级高新技术企业，精准农业与大健康食品研发</li>
             <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 建立高标准花青素提取与检验检疫体系</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 国家严格审批的食品生产许可，合规出海</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 国家严格审批的食品生产许可，合规出海欧美与东南亚</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-   <!-- 简体中文版底部 -->
-  <footer style="background-color: #111f19; padding: 40px 20px; border-top: 1px solid rgba(176,141,87,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-    
-    <!-- 纯代码绘制的 Logo -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px;">
-      <div style="width: 42px; height: 42px; background-color: #B08D57; color: #1F3A2E; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-family: serif; font-size: 24px; font-weight: bold;">鼎</div>
-      <div style="text-align: left;">
-        <div style="color: #F7F4EC; font-size: 22px; font-weight: bold; letter-spacing: 2px; line-height: 1.2;">天鼎国际</div>
-        <div style="color: #B08D57; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;">TIANDING</div>
-      </div>
-    </div>
+  <!-- 自动化占位符：全局底部 -->
+  <div id="global-footer" class="mt-auto"></div>
 
-    <!-- 地址和版权 -->
-    <div style="color: rgba(247, 244, 236, 0.6); font-size: 12px; line-height: 1.8; max-width: 800px;">
-      <p style="margin-bottom: 8px;">Room 633, 6/F, Block B, Wah Luen Industrial Centre, Wong Chuk Yeung Street, Fo Tan, Shatin, HK</p>
-      <p>© 2026 香港天鼎国际贸易有限公司 HK TIANDING INTERNATIONAL TRADE LIMITED. All rights reserved. · <a href="mailto:tiandingtr@gmail.com" style="color: #B08D57; text-decoration: none;">tiandingtr@gmail.com</a></p>
-    </div>
-  </footer>
+  <!-- 引入全局组件脚本 -->
+  <script src="../assets/global.js"></script>
 
   <!-- 滚动动画脚本 -->
   <script>
