@@ -40,9 +40,9 @@
   /* 动效 */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
-  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.2); }
+  .tech-card { transition: all 0.4s ease; background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border: 1px solid rgba(176, 141, 87, 0.22); }
   .tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(31, 58, 46, 0.1); border-color: #B08D57; }
-  .data-num { font-size: 3rem; font-weight: 700; color: #1F3A2E; line-height: 1; }
+  .data-num { font-size: 2.75rem; font-weight: 700; color: #1F3A2E; line-height: 1.1; }
 </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -54,42 +54,159 @@
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-green">
     <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
     <div class="relative z-10 text-center px-6">
+      <div class="inline-block px-4 py-1 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-bold rounded-full mb-5 tracking-widest uppercase">GRAIN-DERIVED ANTHOCYANIN · 穀物源花青素領航者</div>
       <h1 class="text-4xl md:text-6xl font-bold text-brand-cream mb-4 tracking-widest drop-shadow-lg">科學萃取 · 源頭直供</h1>
-      <p class="text-lg text-brand-cream/80 max-w-2xl mx-auto">
-        從紫米與藍莓的自然饋贈，到高科技無菌車間的嚴謹提取。我們不僅提供產品，更提供可追溯的科學依據。
+      <p class="text-lg text-brand-cream/85 max-w-2xl mx-auto leading-relaxed">
+        從世界四大黑土帶的寒地紫稻米糠，到第六代工業 4.0 低溫仿生車間的嚴謹提純。我們不僅提供高純度花青素，更提供可追溯的科學循證依據。
       </p>
     </div>
   </section>
 
-  <!-- 核心成分科普区 -->
-  <section class="max-w-5xl mx-auto px-6 py-24">
+  <!-- 核心成分科普区（升级为三大核心技术指标卡片） -->
+  <section class="max-w-6xl mx-auto px-6 py-24">
     <div class="text-center mb-16 reveal">
-      <h2 class="text-3xl font-bold text-brand-green mb-4">什麼是花青素？</h2>
-      <p class="text-brand-ink/70 max-w-3xl mx-auto leading-relaxed">
-        花青素（Anthocyanin）是一種強有力的天然抗氧化劑，廣泛存在於紫米、藍莓等深色植物中。天鼎研發團隊以紫米為主、藍莓為輔，通過現代生物萃取技術，將這份自然饋贈轉化為易於吸收的大健康產品。
+      <h2 class="text-3xl font-bold text-brand-green mb-4">什麼是穀物源花青素（C3G）？</h2>
+      <p class="text-brand-ink/75 max-w-3xl mx-auto leading-relaxed">
+        花青素（Anthocyanin）是國際公認的強效天然自由基清除劑。天鼎國際突破傳統漿果提取局限，嚴選東北寒地黑土紫稻米糠為核心原料，定向提取高穩定性的<strong class="text-brand-green">「矢車菊素-3-O-葡萄糖苷（C3G）」</strong>，打造高活性、高純度、零果糖負擔的新一代大健康核心原料與終端產品。
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.1s;">
-        <div class="text-brand-gold text-4xl mb-6">🔬</div>
-        <div class="data-num text-brand-gold mb-2">100%</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">科學配比</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">經過海歸研發團隊的反覆測試，尋找紫米與藍莓的最佳提取比例。</p>
+        <div class="text-brand-gold text-4xl mb-5">🔬</div>
+        <div class="data-num text-brand-gold mb-2">~30%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">高純度 C3G 主導</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">經純化後花青素含量高達 30% 左右（以矢車菊素-3-O-葡萄糖苷計），單體結構清晰，具備優異的生物利用度與代謝支持潛力。</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.2s;">
-        <div class="text-brand-gold text-4xl mb-6">🛡️</div>
-        <div class="data-num text-brand-gold mb-2">天然</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">抗氧化活性</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">保留植物天然活性成分，對抗自由基，為身體提供日常健康呵護。</p>
+        <div class="text-brand-gold text-4xl mb-5">🛡️</div>
+        <div class="data-num text-brand-gold mb-2">97%</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">高活性與醯基化穩態</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">創新低溫物理萃取使活性保留率提升至 97%；黑米花青素多以「醯基化形式」存在，結構穩定性天然優於漿果游離態。</p>
       </div>
 
       <div class="tech-card rounded-2xl p-8 reveal" style="transition-delay: 0.3s;">
-        <div class="text-brand-gold text-4xl mb-6">🌱</div>
-        <div class="data-num text-brand-gold mb-2">0</div>
-        <h3 class="text-xl font-bold text-brand-green mb-3">有害添加</h3>
-        <p class="text-sm text-brand-ink/70 leading-relaxed">嚴選優質農作物，拒絕有害化學添加，確保產品的天然與安全。</p>
+        <div class="text-brand-gold text-4xl mb-5">🌾</div>
+        <div class="data-num text-brand-gold mb-2">0 果糖</div>
+        <h3 class="text-xl font-bold text-brand-green mb-3">低 GI 載體無縫融合</h3>
+        <p class="text-sm text-brand-ink/75 leading-relaxed">源自紫稻米糠副產物，無漿果果漿高糖痛點，拒絕有害化學添加，完美契合控糖主食、代餐、烘焙等多元健康載體。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新增核心板块：三大全产业链壁垒（原料端 · 工艺端 · 应用端） -->
+  <section class="bg-[#EFECE2] py-24 border-y border-brand-gold/20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2">FULL-CHAIN COMPETITIVENESS</div>
+        <h2 class="text-3xl font-bold text-brand-green mb-4">全產業鏈三大核心壁壘</h2>
+        <p class="text-brand-ink/70 max-w-2xl mx-auto">
+          在全球範圍內，同時具備「黑土帶規模化種植基礎」與「工業化低溫萃取能力」的企業仍屬少數。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 一、原料端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.1s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">01 / RAW MATERIAL</span>
+            <span class="text-lg font-bold text-brand-green">四大黑土帶</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">一、原料端：黑土帶規模化種植，供應穩定可追溯</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            基地位於世界四大黑土帶之一的中國東北黑土區，連片規模種植紫稻。黑土有機質含量高，晝夜溫差大，極利於花青素在種皮和米糠層富集。以紫稻米糠為萃取原料，實現<strong class="text-brand-green">「種植—加工—萃取」一體化</strong>，原料品質批次穩定、來源可追溯。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 東北寒地黑土高有機質生態稟賦</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 種植—加工—萃取全鏈路一體化把控</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 克服季節與產地波動，批次高度穩定</div>
+          </div>
+        </div>
+
+        <!-- 二、工艺端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.2s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">02 / EXTRACTION TECH</span>
+            <span class="text-lg font-bold text-brand-green">醯基化高穩態</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">二、工藝端：低溫萃取加醯基化結構，高活性與高純度</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            採用創新低溫萃取工藝，避免高溫對花青素母核的破壞，活性保留率提升至 <strong class="text-brand-green">97%</strong>（較常規高溫提取工藝對比數據）；經純化後花青素含量達 <strong class="text-brand-green">30% 左右</strong>（以矢車菊素-3-O-葡萄糖苷計）。黑米花青素本身多以醯基化形式存在，其結構穩定性天然優於游離態花青素，這是穀物源相對漿果源的核心技術差異所在。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> &lt;45°C 低溫提純，97% 活性保留率</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 純化後 C3G 含量高達 ~30%</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 天然醯基化結構，耐加工與儲存穩定性極佳</div>
+          </div>
+        </div>
+
+        <!-- 三、应用端 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-brand-green hover:border-brand-gold transition-all duration-300 flex flex-col reveal" style="transition-delay: 0.3s;">
+          <div class="flex justify-between items-baseline mb-5 pb-4 border-b border-gray-100">
+            <span class="text-xs font-bold tracking-widest text-brand-gold">03 / BLUE OCEAN MARKET</span>
+            <span class="text-lg font-bold text-brand-green">低 GI 代謝藍海</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-green mb-4">三、應用端：穀物源差異化定位與全球藍海市場</h3>
+          <p class="text-sm text-brand-ink/75 leading-relaxed mb-6 flex-1">
+            穀物源花青素以 C3G 為主，與藍莓等漿果類（飛燕草素、錦葵素糖苷為主）結構不同，在<strong class="text-brand-green">抑制脂肪細胞分化、延緩碳水化合物吸收</strong>方面具有研究價值。更關鍵的是載體差異：漿果受產地、季節和價格波動制約且果漿含糖量高；穀物源源自米糠副產物，可融入主食、代餐、烘焙等載體，天然契合<strong class="text-brand-green">歐美超重人群「低GI主食替代」</strong>與<strong class="text-brand-green">東南亞代謝健康需求</strong>。
+          </p>
+          <div class="pt-4 border-t border-dashed border-gray-200 space-y-2 text-xs font-semibold text-brand-green">
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 抑制脂肪細胞分化 + 延緩碳水吸收</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 融入主食/代餐/烘焙，克服果漿高糖與高價痛點</div>
+            <div class="flex items-center gap-2"><span class="text-brand-gold">✓</span> 精準切入歐美低 GI 與東南亞代謝健康藍海</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 谷物源 vs 浆果源 技术代差对比表 -->
+      <div class="mt-14 bg-brand-green rounded-3xl p-8 md:p-12 text-brand-cream shadow-xl reveal">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-brand-gold/25 pb-6">
+          <div>
+            <div class="text-xs font-bold text-brand-gold tracking-widest uppercase mb-2">TECHNICAL COMPARISON</div>
+            <h3 class="text-2xl font-bold">為什麼穀物源（紫稻）花青素更具商業競爭力？</h3>
+          </div>
+          <span class="text-xs text-brand-cream/60">天鼎紫稻米糠花青素 VS 傳統漿果類（藍莓/越橘）花青素</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-brand-gold/30 text-brand-gold">
+                <th class="py-4 px-4 w-1/5 font-bold">對比維度</th>
+                <th class="py-4 px-5 w-2/5 bg-brand-gold/15 border-l-2 border-brand-gold text-white font-bold">天鼎穀物源花青素（寒地紫稻米糠）</th>
+                <th class="py-4 px-5 w-2/5 text-brand-cream/70 font-semibold">傳統漿果源花青素（藍莓等漿果類）</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10">
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">核心分子結構</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">以<strong>矢車菊素-3-O-葡萄糖苷 (C3G)</strong> 為主，純化含量達 ~30%</td>
+                <td class="py-4 px-5 text-brand-cream/70">以飛燕草素、錦葵素糖苷為主，單體構成複雜</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">結構穩定性</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">多以<strong>「醯基化形式」</strong>存在，耐熱、耐光與加工穩定性天然優異</td>
+                <td class="py-4 px-5 text-brand-cream/70">多為游離態花青素，加工與儲存過程中極易降解失活</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">核心健康價值</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">強效抗氧化 + <strong>抑制脂肪細胞分化、延緩碳水化合物吸收</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">以常規抗氧化、視力呵護為主，市場同質化嚴重</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">載體與含糖量</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">源自米糠副產物，無果糖負擔；<strong>完美融入主食、代餐、烘焙載體</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">果漿含糖量高，難以應用於控糖、減重及高溫烘焙主食場景</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-brand-gold">供應鏈與成本</td>
+                <td class="py-4 px-5 bg-brand-gold/10 border-l-2 border-brand-gold text-white">東北黑土帶連片規模種植 + 工業化萃取，<strong>成本僅約 9元/克，批次穩定</strong></td>
+                <td class="py-4 px-5 text-brand-cream/70">受產地、季節和鮮果價格波動制約，原料成本高達約 50元/克</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -102,7 +219,7 @@
           <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">哈工大聯合研發 · 國際領先</div>
           <h2 class="text-3xl font-bold mb-6">第六代工業 4.0 低溫仿生萃取</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-6">
-            花青素對溫度極為敏感，傳統 60°C-80°C 的高溫浸提極易引發多酚降解。哈工大王振宇教授團隊研發的仿生技術，全程將溫度嚴格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模擬植物體內自然生化反應環境。
+            花青素對溫度極為敏感，傳統 60°C-80°C 的高溫浸提極易引發多酚母核破壞與降解。哈工大王振宇教授團隊研發的仿生技術，全程將溫度嚴格控制在 <strong class="text-brand-gold">45°C 以下</strong>，有效模擬植物體內自然生化反應環境，實現高活性保留與高純度提取。
           </p>
           
           <div class="grid grid-cols-2 gap-4 mb-8">
@@ -114,7 +231,7 @@
             <div class="bg-brand-gold/10 p-4 rounded-xl border border-brand-gold shadow-[0_0_15px_rgba(176,141,87,0.2)]">
               <div class="text-xs text-brand-gold mb-1 font-bold">創新低溫仿生 (紫稻)</div>
               <div class="text-2xl font-bold text-brand-gold mb-1">9元/克</div>
-              <div class="text-[11px] text-brand-gold/80 font-bold">活性高達 97%，領先同業</div>
+              <div class="text-[11px] text-brand-gold/80 font-bold">活性高達 97%，C3G純度~30%</div>
             </div>
           </div>
 
@@ -144,15 +261,15 @@
           </div>
         </div>
         <div class="w-full md:w-1/2 reveal" style="transition-delay: 0.2s;">
-          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源頭硬核產能</div>
+          <div class="inline-block px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-full mb-6 tracking-wider">源頭硬核產能 · 四大黑土帶</div>
           <h2 class="text-3xl font-bold mb-6">黑龍江建三江 · 50萬畝紫稻基地</h2>
           <p class="text-brand-cream/80 leading-relaxed mb-8">
-            天鼎深度合作的產業園，依託建三江 1200 萬畝水田，擁有全國最大的 <strong class="text-brand-gold">50 萬畝紫稻種植基地</strong>，年產紫稻 25 萬噸。從源頭把控品質，確保原料的純淨與穩定供應。
+            天鼎深度合作的產業園位於世界四大黑土帶之一的中國東北黑土區，依託建三江 1200 萬畝水田，擁有全國最大的 <strong class="text-brand-gold">50 萬畝連片紫稻種植基地</strong>，年產紫稻 25 萬噸。實現「種植—加工—萃取」一體化，確保原料批次穩定與 100% 可追溯。
           </p>
           <ul class="space-y-4 text-sm font-medium">
             <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 國家級高新技術企業，精準農業與大健康食品研發</li>
             <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 建立高標準花青素提取與檢驗檢疫體系</li>
-            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 國家嚴格審批的食品生產許可，合規出海</li>
+            <li class="flex items-center gap-3"><span class="text-brand-gold text-lg">✓</span> 國家嚴格審批的食品生產許可，合規出海歐美與東南亞</li>
           </ul>
         </div>
       </div>
