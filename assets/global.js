@@ -28,7 +28,7 @@
         <a href="products.html" class="${page === 'products.html' ? 'active' : ''}">${t.prod}</a>
         <a href="science.html" class="${page === 'science.html' ? 'active' : ''}">${t.sci}</a>
         <a href="process.html" class="${page === 'process.html' ? 'active' : ''}">${t.proc}</a>
-        <a href="about.html" class="${page === 'about.html' ? 'active' : ''}">${t.abt}</a>
+        <a href="about.html" class="${page === 'about.html' || page === 'jiansanjiang-visit.html' ? 'active' : ''}">${t.abt}</a>
         <a href="b2b.html" class="${page === 'b2b.html' ? 'active' : ''}">${t.b2b}</a>
         <a href="contact.html" class="${page === 'contact.html' ? 'active' : ''}">${t.cont}</a>
         <div class="lang-switch">
